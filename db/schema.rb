@@ -10,9 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_11_125426) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_11_155814) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "members", force: :cascade do |t|
+    t.bigint "susu_id", null: false
+    t.float "balance"
+    t.date "join_date"
+    t.bigint "user_id", null: false
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["susu_id"], name: "index_members_on_susu_id"
+    t.index ["user_id"], name: "index_members_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "susu_id", null: false
+    t.bigint "member_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_messages_on_member_id"
+    t.index ["susu_id"], name: "index_messages_on_susu_id"
+  end
+
+  create_table "susus", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "balance"
+    t.index ["user_id"], name: "index_susus_on_user_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string "type"
+    t.bigint "member_id", null: false
+    t.float "amount"
+    t.date "date"
+    t.bigint "susu_id", null: false
+    t.boolean "is_disbursed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_transactions_on_member_id"
+    t.index ["susu_id"], name: "index_transactions_on_susu_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +67,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_11_125426) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "members", "susus"
+  add_foreign_key "members", "users"
+  add_foreign_key "messages", "members"
+  add_foreign_key "messages", "susus"
+  add_foreign_key "susus", "users"
+  add_foreign_key "transactions", "members"
+  add_foreign_key "transactions", "susus"
 end
