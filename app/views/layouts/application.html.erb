@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>MySusu</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,9 +11,11 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+  <body>
+  <%#= render "shared/navbar" %>
+  <%= render "shared/flashes" %>
 
     <%= yield %>
+    <br>
   </body>
 </html>
