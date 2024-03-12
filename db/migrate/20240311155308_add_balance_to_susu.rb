@@ -1,5 +1,5 @@
-class AddBalanceToSusu < ActiveRecord::Migration[7.1]
+class AddBalanceToSusu < ActiveRecord::Migration[6.0]
   def change
-    add_column :susus, :balance, :float
+    add_column :susus, :balance, :float unless column_exists?(:susus, :balance)
   end
 end

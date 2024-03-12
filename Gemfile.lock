@@ -314,7 +314,7 @@ DEPENDENCIES
   simple_form!
   sprockets-rails
   stimulus-rails
-  turbo-rails
+  turbo-rails (~> 2.0.5)
   tzinfo-data
   web-console
 
