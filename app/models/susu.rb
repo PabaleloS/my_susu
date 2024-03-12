@@ -17,4 +17,8 @@ class Susu < ApplicationRecord
 
     self.members.update_all(has_received_disbursement: false) if members.empty?
   end
+
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :amount, presence: true, numericality: { greater_than: 0 }
 end
