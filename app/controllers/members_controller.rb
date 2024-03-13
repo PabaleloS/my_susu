@@ -55,10 +55,20 @@ class MembersController < ApplicationController
 
   def update
     @member = current_user.member.find_by(susu_id: params[:susu_id])
+
+    if @member.update(member_params)
+      if @member.accepted?
+        flash[:notice] = 'Invitation accepted successfully.'
+      elsif @member.declined?
+        flash[:notice] = 'Invitation declined successfully.'
+      end
+    else
+      flash[:alert] = 'Failed to update invitation status.'
+    end
+    redirect_to susu_path(@member.susu_id)
   end
 
   private
-
   def member_params
     params.require(:member).permit(:user_id)
   end
