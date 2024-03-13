@@ -1,6 +1,7 @@
 class Susu < ApplicationRecord
   belongs_to :user
   has_many :members
+  has_many :deposits
 
   def next_member
     reset_cycle
