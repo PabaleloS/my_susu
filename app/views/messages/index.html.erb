@@ -1,12 +1,23 @@
-<h1><%= @susu.name %> Messages</h1>
+<div class="container">
 
-<div class="messages-container">
-  <% @messages.each do |message| %>
-    <p><%= message.content %></p>
-  <% end %>
+  <div class="messages">
+    <% @susu.messages.each do |message| %>
+      <div id="message-<%= message.id %>">
+        <small>
+          <strong><%= message.member.user.first_name %></strong>
+          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        </small>
+        <p><%= message.content %></p>
+      </div>
+    <% end %>
+  </div>
+    <%= simple_form_for [@susu, @message],
+        html: {class: "d-flex"} do |f|
+      %>
+        <%= f.input :content,
+          label: false,
+          placeholder: "Message ##{@susu.name}"
+        %>
+        <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <% end %>
 </div>
-
-<%= simple_form_for [@susu, @message] do |f| %>
-  <%= f.input :content, label: false %>
-  <%= f.submit "Send Message"  %>
-<% end %>
