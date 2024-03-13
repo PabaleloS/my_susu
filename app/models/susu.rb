@@ -20,5 +20,5 @@ class Susu < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true
-  validates :amount, presence: true, numericality: { greater_than: 0 }
+  validates :agree_amount, presence: true, numericality: { greater_than: 0 }
 end
