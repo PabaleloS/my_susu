@@ -2,15 +2,19 @@ class MembersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @members = Member.all
+    @susu = Susu.find(params[:susu_id])
+    # test with line below
+    @member = @susu.members.new
+    #
+    @members = @susu.members
   end
 
+  # show detz of a specific member of a susu
   def show
   @susu = Susu.find(params[:id])
-
-  #
-  @members = @susu.members.where.not(status: "declined")
-end
+  # find the member of the susu
+  @member = @susu.members.find(params[:id])
+  end
 
   def new
     @susu = Susu.find(params[:susu_id])
@@ -51,7 +55,6 @@ end
 
   def update
     @member = current_user.member.find_by(susu_id: params[:susu_id])
-    
   end
 
   private
