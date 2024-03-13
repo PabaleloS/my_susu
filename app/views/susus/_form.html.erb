@@ -1,0 +1,32 @@
+<%= form_with(model: Susu.new, local: false, data: { turbo: true }) do |form| %>
+
+    <div class="mb-3 string optional susu_name">
+      <%= form.label :name, class: "string optional" %>
+      <%= form.text_field :name, class: "form-control string optional" %>
+
+    </div>
+
+    <div class="form-outline mx-auto" data-mdb-input-init>
+      <br>
+      <%= form.label :description, class: "form-label", name: "susu_description[description]", id: "SuSu name" %>
+      <%= form.text_area :description, class: "form-control", id: "textAreaExample", rows: "4" %>
+    </div>
+    <br>
+
+  <br>
+
+  <h3>Set Monthly Contribution Rate</h3>
+    <select class="form-control" multiple aria-label="multiple select example" name="monthly_contribution_rates[]">
+    <option value="1">500</option>
+    <option value="2">1500</option>
+    <option value="3">2000</option>
+  </select>
+
+
+<!--  <select class="form-control" multiple aria-label="multiple select example">-->
+<!--    <option selected></option>-->
+
+  <br>
+    <%= form.submit "Create SuSu", class: "btn btn-orange btn-sm" %>
+
+  <% end %>
