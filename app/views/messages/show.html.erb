@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>#<%= @susu.name %></h1>
+
+  <div class="messages">
+    <% @susu.messages.each do |message| %>
+      <div id="message-<%= message.id %>">
+        <small>
+          <strong><%= message.user.nickname %></strong>
+          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        </small>
+        <p><%= message.content %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+  <%= simple_form_for [@susu, @message],
+    html: {class: "d-flex"} do |f|
+  %>
+    <%= f.input :content,
+      label: false,
+      placeholder: "Message ##{@susu.name}",
+      wrapper_html: {class: "flex-grow-1"}
+    %>
+    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <% end %>
