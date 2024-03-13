@@ -2,6 +2,8 @@ class Susu < ApplicationRecord
   belongs_to :user
   has_many :members
 
+  attr_accessor :amount
+
   def next_member
     reset_cycle
     members = self.members.where(status: 'accepted').where(has_received_disbursement: false).to_a
@@ -20,5 +22,5 @@ class Susu < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true
-  validates :amount, presence: true, numericality: { greater_than: 0 }
+  validates :agree_amount, presence: true, numericality: { greater_than: 0 }
 end
