@@ -42,9 +42,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_12_131416) do
     t.bigint "user_id", null: false
     t.string "name"
     t.text "description"
-    t.float "balance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "balance"
     t.float "agree_amount"
     t.index ["user_id"], name: "index_susus_on_user_id"
   end
