@@ -22,7 +22,7 @@ users << User.create!(first_name: "Eve", last_name: "E", email: "eve@mysusu.com"
 
 puts "#{User.count} users created"
 
-susu = Susu.create!(user_id: users[0].id, name: "Adams susu", balance: 500, description: "This susu was set up by Adam to empower his community")
+susu = Susu.create!(user_id: users[0].id, name: "Adams susu", balance: 500, agree_amount: 10, description: "This susu was set up by Adam to empower his community")
 
 puts "Adams susu has been created!"
 

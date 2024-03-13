@@ -1,6 +1,7 @@
 class Susu < ApplicationRecord
   belongs_to :user
   has_many :members
+  has_many :deposits
   has_many :users, through: :members
   has_many :messages
 

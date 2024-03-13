@@ -6,6 +6,5 @@ class User < ApplicationRecord
 
   has_many :owned_susus, class_name: 'Susu'
   has_many :susus, through: :members
-  has_many :transactions
   has_many :messages
 end
