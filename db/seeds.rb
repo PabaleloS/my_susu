@@ -9,7 +9,6 @@
 #   end
 
 puts "Clearing database"
-Member.destroy_all
 Susu.destroy_all
 User.destroy_all
 
@@ -23,10 +22,7 @@ users << User.create!(first_name: "Eve", last_name: "E", email: "eve@mysusu.com"
 
 puts "#{User.count} users created"
 
-susu = Susu.create!( user_id: users[0].id, name: 'Adams susu', description: 'This susu was set up by Adam to empower his community.', balance: 500.0, agree_amount: 100.0
-)
-
-# susu = Susu.create!(user_id: users[0].id, name: "Adams susu", balance: 500, description: "This susu was set up by Adam to empower his community")
+susu = Susu.create!(user_id: users[0].id, name: "Adams susu", balance: 500, description: "This susu was set up by Adam to empower his community")
 
 puts "Adams susu has been created!"
 
@@ -36,4 +32,4 @@ member = Member.create!(susu_id: susu.id, user_id: users[2].id, join_date: "03/0
 member = Member.create!(susu_id: susu.id, user_id: users[3].id, join_date: "04/03/2023", balance: 100)
 member = Member.create!(susu_id: susu.id, user_id: users[4].id, join_date: "05/03/2023", balance: 100)
 
-puts "Members have been assigned to a susu"
+puts "members have been assigned to a susu"
