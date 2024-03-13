@@ -8,7 +8,7 @@ class MembersController < ApplicationController
   def show
   @susu = Susu.find(params[:id])
 
-  # 
+  #
   @members = @susu.members.where.not(status: "declined")
 end
 
@@ -30,7 +30,6 @@ end
   end
 
   def accepted
-
     member = Member.find_by(susu_id: params[:susu_id], user_id: params[:user_id])
     if member
       member.update(status: "accepted")
@@ -52,6 +51,7 @@ end
 
   def update
     @member = current_user.member.find_by(susu_id: params[:susu_id])
+    
   end
 
   private
