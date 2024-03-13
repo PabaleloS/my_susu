@@ -10,37 +10,17 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
-
-}
-
-@media screen and (min-width: 768px) {
-  .container {
-      width: 750px;
-      margin: 0 auto;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .container {
-      width: 1140px;
-  }
 }
 
 #page_main{
   background-color: #d9d9d99d;
-  // position: relative;
-  width: 90%;
+  width: 100%;
   height: 90%;
   border-radius: 10px;
-  // overflow: hidden;
   padding: 20px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-
-  // justify-content: space-between;
-
 }
 
 #header_div{
@@ -101,5 +81,18 @@ body {
       color: white;
     }
 
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+      width: 750px;
+      margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+      width: 1140px;
   }
 }

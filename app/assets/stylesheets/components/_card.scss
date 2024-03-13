@@ -1,0 +1,46 @@
+.invite-card{
+
+  width: 100%;
+  height:fit-content;
+  flex-shrink: 0;
+  background: #E29706;
+  border-radius: 20px;
+}
+
+#invite_group_banner {
+  background: url(https://res.cloudinary.com/dvql3swac/image/upload/v1710306264/rizsoouecer1agairdbk.png) 100% / cover no-repeat;
+  filter: drop-shadow(0px 1px 0px rgba(0, 0, 0, 0));
+  width: 100%;
+  border-radius: 20px;
+  height: 200px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  color: white;
+  //justify-content: center;
+  h6{
+    font-size: medium;
+  }
+}
+
+
+#group_b_detials{
+
+  border-radius: 8px;
+  // background: #E29706;
+  width: 341px;
+  height: 20px;
+  flex-shrink: 0;
+  display: Flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#Toggle_div{
+  width: 45px;
+  height: 35px;
+  flex-shrink: 0;
+}
