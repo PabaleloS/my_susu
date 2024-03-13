@@ -10,10 +10,11 @@ Rails.application.routes.draw do
   resources :susus, except: [:edit, :destroy, :update] do
     resources :messages, only: %i[index create]
     resources :transaction, only: %i[new create]
+    resources :members, only: %i[index new create ]
 
   end
   resources :members, only: %i[update]
-  resources :transaction, only: %i[show]
+  resources :deposit, only: %i[show]
   post "susus/:id/disburse", to: "susus#disburse"
 
   # Defines the root path route ("/")
