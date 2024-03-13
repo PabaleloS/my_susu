@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   resources :susus, except: [:edit, :destroy, :update] do
     resources :messages, only: %i[index create]
     resources :transaction, only: %i[new create]
-
   end
   resources :members, only: %i[update]
   resources :transaction, only: %i[show]
