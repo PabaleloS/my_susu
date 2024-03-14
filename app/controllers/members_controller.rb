@@ -2,15 +2,26 @@ class MembersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @members = Member.all
+    @susu = Susu.find(params[:susu_id])
+    # test with line below
+    @member = @susu.members.new
+    #
+    # Retrieves members specific to the Susu group being viewed
+    @members = @susu.members
+    # Fetch the last deposit date and amount for each member
+    @last_deposits = {}
+    @members.each do |member|
+      last_deposit = member.deposits.last
+      @last_deposits[member.id] = last_deposit ? { date: last_deposit.created_at.to_date, agree_amount: last_deposit.amount } : nil
+    end
   end
 
+  # show detz of a specific member of a susu
   def show
   @susu = Susu.find(params[:id])
-
-  #
-  @members = @susu.members.where.not(status: "declined")
-end
+  # find the member of the susu
+  @member = @susu.members.find(params[:id])
+  end
 
   def new
     @susu = Susu.find(params[:susu_id])
@@ -51,11 +62,20 @@ end
 
   def update
     @member = current_user.member.find_by(susu_id: params[:susu_id])
-    
+
+    if @member.update(member_params)
+      if @member.accepted?
+        flash[:notice] = 'Invitation accepted successfully.'
+      elsif @member.declined?
+        flash[:notice] = 'Invitation declined successfully.'
+      end
+    else
+      flash[:alert] = 'Failed to update invitation status.'
+    end
+    redirect_to susu_path(@member.susu_id)
   end
 
   private
-
   def member_params
     params.require(:member).permit(:user_id)
   end
