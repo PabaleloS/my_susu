@@ -1,0 +1,11 @@
+<div class="parent">
+  <div class="child">
+    <h1>members</h1>
+    <ul>
+      <% @members.each do |member| %>
+        <li><%= member.user.first_name %></li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>

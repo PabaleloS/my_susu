@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_12_131416) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_13_101758) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "deposits", force: :cascade do |t|
+    t.bigint "member_id", null: false
+    t.date "date"
+    t.bigint "susu_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "agree_amount"
+    t.index ["member_id"], name: "index_deposits_on_member_id"
+    t.index ["susu_id"], name: "index_deposits_on_susu_id"
+  end
 
   create_table "members", force: :cascade do |t|
     t.bigint "susu_id", null: false
@@ -49,19 +60,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_12_131416) do
     t.index ["user_id"], name: "index_susus_on_user_id"
   end
 
-  create_table "transactions", force: :cascade do |t|
-    t.string "type"
-    t.bigint "member_id", null: false
-    t.float "amount"
-    t.date "date"
-    t.bigint "susu_id", null: false
-    t.boolean "is_disbursed"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["member_id"], name: "index_transactions_on_member_id"
-    t.index ["susu_id"], name: "index_transactions_on_susu_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -76,11 +74,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_12_131416) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "deposits", "members"
+  add_foreign_key "deposits", "susus"
   add_foreign_key "members", "susus"
   add_foreign_key "members", "users"
   add_foreign_key "messages", "members"
   add_foreign_key "messages", "susus"
   add_foreign_key "susus", "users"
-  add_foreign_key "transactions", "members"
-  add_foreign_key "transactions", "susus"
 end
