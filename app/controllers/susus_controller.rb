@@ -5,10 +5,12 @@ class SususController < ApplicationController
 
   def show
     @susu = Susu.find(params[:id])
+    @message = Message.new
   end
 
   def new
-    @susus = Susu.new
+    @susu = Susu.new
+    @user = current_user
   end
 
   def disburse
@@ -22,9 +24,10 @@ class SususController < ApplicationController
 
   def create
     @susu = Susu.new(susu_params)
+    @susu.user_id = current_user.id
 
     if @susu.save
-      redirect_to @susu, notice: 'Susu was successfully created.'
+      redirect_to susu_path(@susu), notice: 'Susu was successfully created.'
     else
       render :new
     end
@@ -33,6 +36,7 @@ class SususController < ApplicationController
   private
 
   def susu_params
-    params.require(:susu).permit(:name, :description)
+    params.require(:susu).permit(:name, :agree_amount, :description)
   end
+
 end
