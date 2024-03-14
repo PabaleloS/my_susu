@@ -1,10 +1,16 @@
+<br>
+<div class="container">
+<br>
+  <div id="page_main1">
 
-<div class="container new-susu-container">
-  <div id="new_susu_header">
+<!--<div class="container new-susu-container">
+-->  <div id="new_susu_header">
 
     <div id="back_arrow">
       <img width="48" height="48" src="https://img.icons8.com/fluency-systems-filled/48/long-arrow-left.png" alt="long-arrow-left"/>
     </div>
+
+
 
     <div id="menu_icon">
       <img width="24" height="24" src="https://img.icons8.com/android/24/menu.png" alt="menu"/>
@@ -13,9 +19,21 @@
   </div>
   <br>
 
-  <h2>Create a new SuSu</h2>
-  
+
+  <h2>Create</h2>
+<h2><strong>a new SuSu</strong></h2>
+
+  <br>
   <%= render 'form' %>
 
+  <script>
+  document.getElementById("back_arrow").addEventListener("click", function(event) {
+    event.preventDefault();
+    window.location.href = "../";
+  });
+  </script>
+
+
+</div>
 
 </div>
