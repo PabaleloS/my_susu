@@ -27,7 +27,8 @@ class SususController < ApplicationController
     @susu.user_id = current_user.id
 
     if @susu.save
-      redirect_to susu_path(@susu), notice: 'Susu was successfully created.'
+      redirect_to susu_members_path(@susu), notice: 'Susu was successfully created.'
+
     else
       render :new
     end
