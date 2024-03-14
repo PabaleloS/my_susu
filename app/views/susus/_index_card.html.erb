@@ -1,22 +1,27 @@
 <br>
-<p>Your pending Invitation</p>
+<% if @susu && @susu.members.exists?(id: current_user.id) %>
+    <p>Your pending Invitation</p>
+    <h6><%= @susu.name %></h6>
+  <%  else %>
+    <p>You have no invitation</p>
+  <% end %>
 
 <div class="invite-card">
-
-  <div id="invite_group_banner">
-    <div>
-      <h6> Building Tommorrow </h6>
-      <p> 3 members join today</p>
-    </div>
-
-    <div id="Toggle_div">
-      <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/FFFFFF/toggle-off.png" alt="toggle-off"/>
-    </div>
+ <% if @susu && @susu.members.exists?(id: current_user.id) %>
+      <% @susus.each do |susu| %>
+        <div id="invite_group_banner">
+          <div>
+            <h6> <%= link_to susu.name, susu_path(susu) %> </h6>
+            <p> <%= @susu.members.count %> members join today</p>
+          </div>
+        </div>
+        <div id="group_b_detials">
+          <div class="avatar_i">
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+            <p> invited you </p>
+          </div>
+          <button type="button" class="btn btn-light">Join</button>
+        </div>
+    <% end %>
   </div>
-
-  <div id="group_b_detials">
-
-  </div>
-
-
-</div>
+<% end %>
