@@ -6,7 +6,14 @@ class MembersController < ApplicationController
     # test with line below
     @member = @susu.members.new
     #
+    # Retrieves members specific to the Susu group being viewed
     @members = @susu.members
+    # Fetch the last deposit date and amount for each member
+    @last_deposits = {}
+    @members.each do |member|
+      last_deposit = member.deposits.last
+      @last_deposits[member.id] = last_deposit ? { date: last_deposit.created_at.to_date, agree_amount: last_deposit.amount } : nil
+    end
   end
 
   # show detz of a specific member of a susu
