@@ -3,9 +3,6 @@ class MembersController < ApplicationController
 
   def index
     @susu = Susu.find(params[:susu_id])
-    # test with line below
-    @member = @susu.members.new
-    #
     # Retrieves members specific to the Susu group being viewed
     @members = @susu.members
     # Fetch the last deposit date and amount for each member
@@ -25,7 +22,7 @@ class MembersController < ApplicationController
 
   def new
     @susu = Susu.find(params[:susu_id])
-    @member = @susu.members.new
+    @users_not_in_susu = User.where.not(id: @susu.members.pluck(:user_id))
   end
 
   def create

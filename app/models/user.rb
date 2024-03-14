@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :owned_susus, class_name: 'Susu'
+  has_many :members
   has_many :susus, through: :members
   has_many :messages
 end

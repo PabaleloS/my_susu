@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :messages, only: %i[index create]
     resources :deposits, only: %i[create]
     resources :members, only: %i[index new create]
+    resources :users, only: %i[index]
 
   end
   resources :members, only: %i[update]

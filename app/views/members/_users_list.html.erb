@@ -1,0 +1,15 @@
+<div data-search-users-target="users_list">
+  <%= simple_form_for @susu do |f| %>
+    <%= f.hidden_field :id %>
+    <ul>
+      <% users.each do |user| %>
+        <li>
+          <%= f.check_box :member_ids, include_hidden: true, value: user.id %>
+          <%= user.first_name %>
+        </li>
+      <% end %>
+    </ul>
+
+    <%= f.submit "Add Members" %>
+  <% end %>
+</div>
