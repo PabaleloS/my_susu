@@ -15,6 +15,11 @@
         </div>
 
         <div id="top_btn">
+          <%#= button_to "disburse", disburse_path(@susu) %>
+          <p><%= link_to "disburse", disburse_path(@susu), class: "no-underline" %></p>
+        </div>
+
+        <div id="top_btn">
           <p><%= link_to "Topup", new_susu_deposit_path(@susu), class: "no-underline" %></p>
         </div>
 
