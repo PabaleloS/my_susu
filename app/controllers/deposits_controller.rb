@@ -29,7 +29,7 @@ class DepositsController < ApplicationController
     @susu.balance += @deposit.agree_amount
     @susu.save
     if @deposit.save
-      redirect_to susu_path(@susu), notice: "Deposit was successfully added."
+      redirect_to susu_deposit_path(@susu, @deposit), notice: "Deposit was successfully added."
     else
       render :new, status: :unprocessable_entity
     end
