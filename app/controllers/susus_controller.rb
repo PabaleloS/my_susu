@@ -6,6 +6,7 @@ class SususController < ApplicationController
 
   def show
     @susu = Susu.find(params[:id])
+    @user = current_user
     @message = Message.new
   end
 
