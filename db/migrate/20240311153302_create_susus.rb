@@ -4,7 +4,7 @@ class CreateSusus < ActiveRecord::Migration[7.1]
       t.references :user, null: false, foreign_key: true
       t.string :name
       t.text :description
-      t.float :balance
+      t.float :balance, default: 0
 
       t.timestamps
     end

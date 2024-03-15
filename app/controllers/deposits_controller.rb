@@ -21,13 +21,15 @@ class DepositsController < ApplicationController
     # @deposit = @susu.deposits.new(deposit_params)
     # @deposit = Deposit.new(deposit_params)
     @deposit = @susu.deposits.new(deposit_params)
-    member = Member.find_by(susu: @susu, user: current_user)
+    member = @susu.members.find_by(user_id: current_user.id)
+    # member = Member.find_by(susu: @susu, user_id: current_user.id)
     @deposit.member = member
-    @deposit.susu = @susu
+    # @deposit.susu = @susu
     @deposit.date = Date.today
-
+    @susu.balance += @deposit.agree_amount
+    @susu.save
     if @deposit.save
-      redirect_to susu_path(@susu), notice: "Deposit was successfully added."
+      redirect_to susu_deposit_path(@susu, @deposit), notice: "Deposit was successfully added."
     else
       render :new, status: :unprocessable_entity
     end
