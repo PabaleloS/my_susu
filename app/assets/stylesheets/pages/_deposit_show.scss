@@ -1,0 +1,26 @@
+.container {
+  position: relative;
+}
+
+#page_main {
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+
+.success-message {
+  background-color: black;
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 50px;
+}
+
+.track-button {
+  display: inline-block;
+  padding: 15px 90px;
+  background-color: orange;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
