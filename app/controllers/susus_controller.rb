@@ -15,6 +15,7 @@ class SususController < ApplicationController
 
   def show
     @susu = Susu.find(params[:id])
+    @user = current_user
     @message = Message.new
     @all_members = @susu.members
     @accepted_members = @susu.members.where(status: "accepted")

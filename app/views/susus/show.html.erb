@@ -31,12 +31,15 @@
 
           <img width="20" height="20" src="https://img.icons8.com/ios/50/appointment-reminders--v1.png" alt="alert"/>
           </div>
-          <%#= button_to "disburse", disburse_path(@susu) %>
+<!--           <%#= button_to "disburse", disburse_path(@susu) %> -->
           <%= render partial: 'susus/show_card', susu: @susu %>
           <br>
 
         <% if @all_members.any? %>
             <div id="next_withdraw_big_card">
+          <% @user.member_ids.each do |member_id| %>
+            <% if @susu.member_ids.include?(member_id) && Member.where(id: member_id).first.status == "accepted" %>
+              <div id="next_withdraw_big_card">
                 <p> Next Withdraw </p>
           <%  @accepted_members.each do |member|  %>
 
@@ -73,9 +76,9 @@
                   </div>
                 </div>
                 <% end %>
-              <%  else %>
+            <%  else %>
               <p>This susu has no members</p>
-            <% end %>
+          <% end %>
       </div>
         <%= render "shared/link", class: "row" %>
   </div>
