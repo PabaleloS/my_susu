@@ -33,28 +33,26 @@
           </div>
           <%= render partial: 'susus/show_card' %>
           <br>
-
-        <% if @member && @member.susus.exists?(id: @susu_id.id) %>
-
-            <div id="next_withdraw_big_card">
+          <% @user.member_ids.each do |member_id| %>
+            <% if @susu.member_ids.include?(member_id) && Member.where(id: member_id).first.status == "accepted" %>
+              <div id="next_withdraw_big_card">
                 <p> Next Withdraw </p>
 
                 <div id="withdraw_list_card">
-                    <div id="set_width">
-                      <img width="44" height="53" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710413992/knanllixywtz69qieml5.png" alt="susu_member"/>
-
-                      <div id="withdraw_user_text">
-                          <h6> <%= @susu.user.first_name %>  </h6>
-                          <p> <%= @susu.user.updated_at.strftime('%Y-%m-%d') %></p>
-                      </div>
-                      </div>
-                    <img width="33" height="41" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710414522/twgfu6nrs9zg1gungee0.png" alt="leaderboard"/>
+                  <div id="set_width">
+                    <img width="44" height="53" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710413992/knanllixywtz69qieml5.png" alt="susu_member"/>
+                    <div id="withdraw_user_text">
+                        <h6> <%= @susu.user.first_name %>  </h6>
+                        <p> <%= @susu.user.updated_at.strftime('%Y-%m-%d') %></p>
+                    </div>
                   </div>
+                  <img width="33" height="41" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710414522/twgfu6nrs9zg1gungee0.png" alt="leaderboard"/>
                 </div>
-
-              <%  else %>
+              </div>
+            <%  else %>
               <p>This susu has no members</p>
             <% end %>
+          <% end %>
       </div>
         <%= render "shared/link", class: "row" %>
   </div>
