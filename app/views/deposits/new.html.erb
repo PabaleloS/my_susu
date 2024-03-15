@@ -1,0 +1,18 @@
+<br>
+  <div class="container">
+    <br>
+      <div id="page_main">
+        <h1>New Deposit</h1>
+        <!--<p>Agreed Amount: <%#= @agreed_amount.inspect %></p>-->
+        <%= form_with(model: @deposit, url: susu_deposits_path(@susu)) do |form| %>
+        <div class="form-group">
+          <!-- Hidden field for the amount with set value -->
+          <%= form.hidden_field :agree_amount, value: @agreed_amount %>
+          <!-- Display the agreed amount -->
+          <%= form.label :agree_amount, "Agreed Amount" %>
+          <p><%= @agreed_amount %></p>
+        </div>
+        <%= form.submit "Make Deposit", class: "btn btn-primary" %>
+<% end %>
+      </div>
+  </div>

@@ -2,10 +2,13 @@ class DepositsController < ApplicationController
   before_action :authenticate_user!
 
   # commented out because the form will come from the popup modal in the susus#show
-  # def new
-  #   @susu = Susu.find(params[:susu_id])
-  #   @deposit = Deposit.new
-  # end
+  def new
+    puts "Params: #{params.inspect}"
+    @susu = Susu.find(params[:susu_id])
+    puts "@susu: #{@susu.inspect}"
+    @agreed_amount = @susu.agree_amount
+    @deposit = Deposit.new
+  end
 
   # this should be in the susu controller so member can see their deposits
   # def show
@@ -16,14 +19,17 @@ class DepositsController < ApplicationController
   def create
     @susu = Susu.find(params[:susu_id])
     # @deposit = @susu.deposits.new(deposit_params)
-    @deposit = Deposit.new(deposit_params)
-    member = Member.find_by(susu: @susu, user: current_user)
+    # @deposit = Deposit.new(deposit_params)
+    @deposit = @susu.deposits.new(deposit_params)
+    member = @susu.members.find_by(user_id: current_user.id)
+    # member = Member.find_by(susu: @susu, user_id: current_user.id)
     @deposit.member = member
-    @deposit.susu = @susu
+    # @deposit.susu = @susu
     @deposit.date = Date.today
-
+    @susu.balance += @deposit.agree_amount
+    @susu.save
     if @deposit.save
-      redirect_to susu_path(@susu), notice: "Deposit was successfully added."
+      redirect_to susu_deposit_path(@susu, @deposit), notice: "Deposit was successfully added."
     else
       render :new, status: :unprocessable_entity
     end

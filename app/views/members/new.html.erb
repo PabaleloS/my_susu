@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>Add members to <%= @susu.name %></h1>
+
+  <div data-controller="search-users">
+    <%= form_with url: susu_users_path(@susu), method: :get, html: {class: "mb-4", data: {search_users_target: "form"}} do |f| %>
+      <%= f.text_field :query,
+                        class: "form-control",
+                        placeholder: "Type a name",
+                        value: params[:query],
+                        data: {
+                          search_users_target: "input",
+                          action: "keyup->search-users#update"
+                        } %>
+    <% end %>
+
+    <%= render "users_list", users: @users_not_in_susu %>
+
+  </div>
+
+
+<%#= form_for([@susu, @member]) do |f| %>
+  <%#= render 'form', f: f %>
+<%# end %>
+<!---->
+
+
+
+
+
+</div>
