@@ -11,10 +11,11 @@ class DepositsController < ApplicationController
   end
 
   # this should be in the susu controller so member can see their deposits
-  # def show
-  #   @susu = Susu.find(params[:id])
-  #   @deposits = @susu.deposits.includes(:user)
-  # end
+  def show
+    @deposit = Deposit.find(params[:id])
+    # @deposits = @susu.deposits.includes(:user)
+    
+  end
 
   def create
     @susu = Susu.find(params[:susu_id])
@@ -27,11 +28,8 @@ class DepositsController < ApplicationController
     # @deposit.susu = @susu
     @deposit.date = Date.today
     @susu.balance += @deposit.agree_amount
-    @susu.save
-    if @deposit.save
+    if @deposit.save! && @susu.save!
       redirect_to susu_deposit_path(@susu, @deposit), notice: "Deposit was successfully added."
-    else
-      render :new, status: :unprocessable_entity
     end
   end
 

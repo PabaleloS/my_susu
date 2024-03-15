@@ -2,14 +2,14 @@
   <div id="page_main">
     <div class="success-message">
       <p><strong style="font-size: 24px;">Payment confirmed:</strong></p>
-      <p><span>Great news! Your mySusu</span> <span>account has been credited</span> <span>with R1000 successfully.</span></p>
+      <p><span>Great news! Your mySusu</span> <span>account has been credited</span> <span>with <%= @deposit.agree_amount %> successfully.</span></p>
     </div>
 
     <br>
 
     <h4 style="text-align: left;">Transaction Details:</h4>
     <ul style="padding-left: 40px;">
-      <li><strong>Amount:</strong> R1000</li>
+      <li><strong>Amount:</strong> <%= @deposit.agree_amount %></li>
       <li><strong>Date:</strong> March 15, 2024</li>
     </ul>
 
@@ -29,7 +29,7 @@
 
     <h6 style="text-align: center;">Thanks for using mySusu! 🎉</h6>
     <div style="text-align: center; margin-top: 20px;">
-    <%= link_to "Track Contribution", susu_members_path, class: "track-button" %>
+    <%= link_to "Track Contribution", susu_members_path(@deposit.susu), class: "track-button" %>
 
 
     </div>
