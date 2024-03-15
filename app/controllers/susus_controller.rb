@@ -1,12 +1,24 @@
 class SususController < ApplicationController
+
   def index
-    @susus = Susu.all
-    @user = current_user
+
+      @user = current_user
+      @members = @user.members
+      # @susus = @members.susus
+      @susus = []
+      @members.each do |member|
+        susu = member.susu
+        @member = member
+        @susus << susu
+      end
   end
 
   def show
     @susu = Susu.find(params[:id])
     @message = Message.new
+    @all_members = @susu.members
+    @accepted_members = @susu.members.where(status: "accepted")
+    @pending_members = @susu.members.where(status: "pending")
   end
 
   def new
@@ -16,11 +28,16 @@ class SususController < ApplicationController
 
   def disburse
     susu = Susu.find(params[:id])
-    member = @susu.next_member
+    member = susu.next_member
     member.balance += susu.balance
     member.save
     susu.balance = 0
-    susu.save
+
+    if susu.save && member.save
+      redirect_to susu_path(susu), notice: "#{susu.agree_amount} disbursed to #{member.user.first_name}"
+    else
+      render :show, alert: "disbursement unsuccessful, please try again"
+    end
   end
 
   def create
