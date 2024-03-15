@@ -37,25 +37,39 @@ class MembersController < ApplicationController
     end
   end
 
-  def accepted
-    member = Member.find_by(susu_id: params[:susu_id], user_id: params[:user_id])
-    if member
-      member.update(status: "accepted")
-      redirect_to susu_path(params[:susu_id]), notice: "Member accepted ."
-    else
-      redirect_to susu_path(params[:susu_id]), notice: "Member not found."
+  def create_members
+    @user_ids = params[:member_ids]
+    @susu = Susu.find(params[:id])
+    @user_ids.each do |user_id|
+      member = Member.new(user_id: user_id,
+                          susu_id: @susu.id,
+                          status: "pending",
+                          balance: 0,
+                          join_date: Date.today)
+    member.save
     end
+    redirect_to root_path, notice: "Members were successfully added."
   end
 
-  def declined
-    member = Member.find_by(susu_id: params[:susu_id], user_id: params[:user_id])
-    if member
-      member.update(status: "declined")
-      redirect_to susu_path(params[:susu_id]), notice: "Member declined ."
-    else
-      redirect_to susu_path(params[:susu_id]), notice: "Member not found."
-    end
-  end
+  # def accepted
+  #   member = Member.find_by(susu_id: params[:susu_id], user_id: params[:user_id])
+  #   if member
+  #     member.update(status: "accepted")
+  #     redirect_to susu_path(params[:susu_id]), notice: "Member accepted ."
+  #   else
+  #     redirect_to susu_path(params[:susu_id]), notice: "Member not found."
+  #   end
+  # end
+
+  # def declined
+  #   member = Member.find_by(susu_id: params[:susu_id], user_id: params[:user_id])
+  #   if member
+  #     member.update(status: "declined")
+  #     redirect_to susu_path(params[:susu_id]), notice: "Member declined ."
+  #   else
+  #     redirect_to susu_path(params[:susu_id]), notice: "Member not found."
+  #   end
+  # end
 
   def update
     @member = current_user.member.find_by(susu_id: params[:susu_id])

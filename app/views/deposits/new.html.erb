@@ -1,0 +1,11 @@
+<br>
+  <div class="container">
+    <br>
+      <div id="page_main">
+        <h1>New Deposit</h1>
+        <p>Agreed Amount: <%= @agreed_amount.inspect %></p>
+        <%= form_with(model: @deposit, url: susu_deposits_path(@susu)) do |form| %>
+          <%= form.submit "Make Deposit", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+  </div>
