@@ -1,0 +1,14 @@
+<div data-search-users-target="users_list">
+  <%= form_with url: create_members_path(@susu) do |f| %>
+    <ul>
+      <% users.each do |user| %>
+        <li>
+          <%= f.check_box :member_ids, {multiple: true}, user.id, nil %>
+          <%= user.first_name %>
+        </li>
+      <% end %>
+    </ul>
+
+    <%= f.submit "Add Members" %>
+  <% end %>
+</div>

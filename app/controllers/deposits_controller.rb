@@ -2,10 +2,13 @@ class DepositsController < ApplicationController
   before_action :authenticate_user!
 
   # commented out because the form will come from the popup modal in the susus#show
-  # def new
-  #   @susu = Susu.find(params[:susu_id])
-  #   @deposit = Deposit.new
-  # end
+  def new
+    puts "Params: #{params.inspect}"
+    @susu = Susu.find(params[:susu_id])
+    puts "@susu: #{@susu.inspect}"
+    @agreed_amount = @susu.agree_amount
+    @deposit = Deposit.new
+  end
 
   # this should be in the susu controller so member can see their deposits
   # def show
@@ -16,7 +19,8 @@ class DepositsController < ApplicationController
   def create
     @susu = Susu.find(params[:susu_id])
     # @deposit = @susu.deposits.new(deposit_params)
-    @deposit = Deposit.new(deposit_params)
+    # @deposit = Deposit.new(deposit_params)
+    @deposit = @susu.deposits.new(deposit_params)
     member = Member.find_by(susu: @susu, user: current_user)
     @deposit.member = member
     @deposit.susu = @susu
