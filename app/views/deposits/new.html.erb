@@ -2,17 +2,22 @@
   <div class="container">
     <br>
       <div id="page_main">
-        <h1>New Deposit</h1>
+      <div class="deposit">
+        <h1 style="text-align: center;">New Deposit</h1>
         <!--<p>Agreed Amount: <%#= @agreed_amount.inspect %></p>-->
         <%= form_with(model: @deposit, url: susu_deposits_path(@susu)) do |form| %>
-        <div class="form-group">
+        <div class="form-group " style="text-align: center;">
           <!-- Hidden field for the amount with set value -->
           <%= form.hidden_field :agree_amount, value: @agreed_amount %>
           <!-- Display the agreed amount -->
           <%= form.label :agree_amount, "Agreed Amount" %>
-          <p><%= @agreed_amount %></p>
+          <p style="font-size: 24px;"><%= @agreed_amount %></p>
         </div>
-        <%= form.submit "Make Deposit", class: "btn btn-primary" %>
+        <div style="text-align: center; margin-top:20px;">
+
+        <%= form.submit "Make Deposit", class: "track-button" %>
+        </div>
 <% end %>
+</div>
       </div>
   </div>
