@@ -10,8 +10,13 @@
 
         <div id="payment_btns_div">
             <div id="secret_balance">
-            <h6><b><p> <span id="Actual_balance"> $1000</span></p></b></h6>
+            <h6><b><p> <span id="Actual_balance"> <%= @susu.balance %></span></p></b></h6>
             <h6><b><p> <span id="fake_balance">$xxxxx</span></p></b></h6>
+        </div>
+
+        <div id="top_btn">
+          <%#= button_to "disburse", disburse_path(@susu) %>
+          <p><%= button_to "disburse", disburse_path(@susu), class: "btn btn-link no-underline" %></p>
         </div>
 
         <div id="top_btn">
@@ -34,7 +39,7 @@
                 <div id="button_div1">
 
                   <img width="20" height="20" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710397112/zqy55trixnjyf3lbuyts.png" alt="guest-male--v1"/>
-                  <p> <%= link_to "Invite", "../susus/new", class: "no-underline" %> </p>
+                  <p> <%= link_to "Invite", new_susu_member_path(@susu), class: "no-underline" %> </p>
 
                 </div>
 

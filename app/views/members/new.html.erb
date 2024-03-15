@@ -1,4 +1,6 @@
+<br>
 <div class="container">
+  <div id="page_main">
   <h1>Add members to <%= @susu.name %></h1>
 
   <div data-controller="search-users">
@@ -15,16 +17,6 @@
 
     <%= render "users_list", users: @users_not_in_susu %>
 
+    </div>
   </div>
-
-
-<%#= form_for([@susu, @member]) do |f| %>
-  <%#= render 'form', f: f %>
-<%# end %>
-<!---->
-
-
-
-
-
 </div>
