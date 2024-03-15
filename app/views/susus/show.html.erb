@@ -1,4 +1,18 @@
  <br>
+    <!--<div class="footer">
+      <div class="footer-container">
+        <%#= link_to susu_messages_path(@susu), class: "nav-link" do %>-->
+<!--          <i class="fa-regular fa-message"></i>-->
+        <%# end %>
+        <%#= link_to root_path, class: "nav-link" do %>
+<!--          <i class="fa-solid fa-house-user"></i>-->
+        <%# end %>
+        <%#= link_to susu_members_path(@susu), class: "nav-link" do %>
+<!--          <i class="fa-solid fa-list"></i>-->
+        <%# end %>
+<!--      </div>
+    </div>-->
+
     <div class="container">
       <br>
       <div id="page_main">
@@ -41,6 +55,6 @@
               <p>This susu has no members</p>
             <% end %>
       </div>
+        <%= render "shared/link", class: "row" %>
   </div>
-    <%= render partial: "shared/footer" %>
 </div>
