@@ -2,6 +2,8 @@ class SususController < ApplicationController
   def index
     @susus = Susu.all
     @user = current_user
+    #
+    @members = Member.all
   end
 
   def show

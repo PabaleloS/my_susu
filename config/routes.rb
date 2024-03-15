@@ -17,7 +17,11 @@ Rails.application.routes.draw do
     resources :users, only: %i[index]
 
   end
-  resources :members, only: %i[update]
+  # resources :members, only: %i[update]
+  resources :members, only: [] do
+    post 'accept', on: :member, to: 'members#accept', as: 'accept'
+    post 'decline', on: :member, to: 'members#decline', as: 'decline'
+  end
   # resources :deposits, only: %i[show]
 
 
