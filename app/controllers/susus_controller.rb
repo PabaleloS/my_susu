@@ -1,7 +1,6 @@
 class SususController < ApplicationController
 
   def index
-
       @user = current_user
       @members = @user.members
       # @susus = @members.susus
