@@ -1,85 +1,65 @@
 <br>
-    <!--<div class="footer">
-      <div class="footer-container">
-        <%#= link_to susu_messages_path(@susu), class: "nav-link" do %>-->
-<!--          <i class="fa-regular fa-message"></i>-->
-        <%# end %>
-        <%#= link_to root_path, class: "nav-link" do %>
-<!--          <i class="fa-solid fa-house-user"></i>-->
-        <%# end %>
-        <%#= link_to susu_members_path(@susu), class: "nav-link" do %>
-<!--          <i class="fa-solid fa-list"></i>-->
-        <%# end %>
-<!--      </div>
-    </div>-->
+<div class="container">
+  <br>
+  <div id="page_main">
 
-    <div class="container">
-      <br>
-      <div id="page_main">
+    <div id="show_header_div">
 
-        <div id="show_header_div">
-
-        <div id="header_user">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
-            <div id="header_user_text">
-                <h6><%= @susu.user.first_name %> <%= @susu.user.last_name %></h6>
-                <p> Welcome back! 🌟</p>
-                <%#= @susu.balance %>
-            </div>
-
-          </div>
-
-          <img width="20" height="20" src="https://img.icons8.com/ios/50/appointment-reminders--v1.png" alt="alert"/>
-          </div>
-<!--           <%#= button_to "disburse", disburse_path(@susu) %> -->
-          <%= render partial: 'susus/show_card', susu: @susu %>
-          <br>
-
-        <% if @all_members.any? %>
-            <div id="next_withdraw_big_card">
-          <% @user.member_ids.each do |member_id| %>
-            <% if @susu.member_ids.include?(member_id) && Member.where(id: member_id).first.status == "accepted" %>
-              <div id="next_withdraw_big_card">
-                <p> Next Withdraw </p>
-          <%  @accepted_members.each do |member|  %>
-
-                <div id="withdraw_list_card">
-                    <div id="set_width">
-                      <img width="44" height="53" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710413992/knanllixywtz69qieml5.png" alt="susu_member"/>
-
-                      <div id="withdraw_user_text">
-                          <h6> <%= member.user.first_name %>  </h6>
-                        <!--  <p> <%#= member.user.updated_at.strftime('%Y-%m-%d') %></p>-->
-                          <p> Balance: <%= member.balance %></p>
-                        <!--  <p>Has received disbursal in this cycle: <%#= member.has_received_disbursement %></p>-->
-                      </div>
-                      </div>
-                    <img width="33" height="41" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710414522/twgfu6nrs9zg1gungee0.png" alt="leaderboard"/>
-                  </div>
-                <% end %>
-                </div>
-        <% elsif @pending_members.present? %>
-        <% @pending_members.each do |member| %>
-        <div id="next_withdraw_big_card">
-                <p> Pending Members </p>
-
-                <div id="withdraw_list_card">
-                    <div id="set_width">
-                      <img width="44" height="53" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710413992/knanllixywtz69qieml5.png" alt="susu_member"/>
-
-                      <div id="withdraw_user_text">
-                          <h6> <%= member.user.first_name %>  </h6>
-                          <p> <%= member.user.updated_at.strftime('%Y-%m-%d') %></p>
-                      </div>
-                      </div>
-                    <img width="33" height="41" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710414522/twgfu6nrs9zg1gungee0.png" alt="leaderboard"/>
-                  </div>
-                </div>
-                <% end %>
-            <%  else %>
-              <p>This susu has no members</p>
-          <% end %>
+      <div id="header_user">
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+        <div id="header_user_text">
+          <h6><%= @susu.user.first_name %> <%= @susu.user.last_name %></h6>
+          <p> Welcome back! 🌟</p>
+          <%#= @susu.balance %>
+        </div>
       </div>
-        <%= render "shared/link", class: "row" %>
+
+      <img width="20" height="20" src="https://img.icons8.com/ios/50/appointment-reminders--v1.png" alt="alert"/>
+    </div>
+
+    <%= button_to "disburse", disburse_path(@susu) %>
+    <%= render partial: 'susus/show_card', susu: @susu %>
+    <br>
+
+    <% if @all_members.any? %>
+    <div id="next_withdraw_big_card">
+      <p> Next Withdraw </p>
+      <% @accepted_members.each do |member|  %>
+      <div id="withdraw_list_card">
+        <div id="set_width">
+          <img width="44" height="53" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710413992/knanllixywtz69qieml5.png" alt="susu_member"/>
+          <div id="withdraw_user_text">
+            <h6> <%= member.user.first_name %>  </h6>
+            <p> <%= member.user.updated_at.strftime('%Y-%m-%d') %></p>
+            <p> Balance: <%= member.balance %></p>
+            <p>Has received disbursal in this cycle: <%= member.has_received_disbursement %></p>
+          </div>
+        </div>
+        <img width="33" height="41" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710414522/twgfu6nrs9zg1gungee0.png" alt="leaderboard"/>
+      </div>
+      <% end %>
+    </div>
+    <% elsif @pending_members.present? %>
+    <% @pending_members.each do |member| %>
+    <div id="next_withdraw_big_card">
+      <p> Pending Members </p>
+      <div id="withdraw_list_card">
+        <div id="set_width">
+          <img width="44" height="53" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710413992/knanllixywtz69qieml5.png" alt="susu_member"/>
+          <div id="withdraw_user_text">
+            <h6> <%= member.user.first_name %>  </h6>
+            <p> <%= member.user.updated_at.strftime('%Y-%m-%d') %></p>
+          </div>
+        </div>
+        <img width="33" height="41" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710414522/twgfu6nrs9zg1gungee0.png" alt="leaderboard"/>
+      </div>
+      <img width="33" height="41" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710414522/twgfu6nrs9zg1gungee0.png" alt="leaderboard"/>
+    </div>
+    <% end %>
+    <% else %>
+    <p>This susu has no members</p>
+    <% end %>
   </div>
+  <%= render "shared/link", class: "row" %>
 </div>
+<!--</div>-->
