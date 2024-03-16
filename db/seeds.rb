@@ -9,6 +9,7 @@
 #   end
 
 puts "Clearing database"
+Message.destroy_all
 Member.destroy_all
 Susu.destroy_all
 User.destroy_all
