@@ -40,6 +40,20 @@ class SususController < ApplicationController
     end
   end
 
+  def accept_invite
+
+    @user = current_user
+    @susu = Susu.find(params[:id])
+    @member = @susu.members.find_by(user_id: @user.id)
+
+    if @member.update(status: :accepted)
+      # raise
+      redirect_to susu_path(@susu), notice: "You have accepted the invite to join the Susu"
+    else
+      redirect_to susus_path, alert: "An error occurred, please try again"
+    end
+  end
+
   def create
     @susu = Susu.new(susu_params)
     @susu.user_id = current_user.id

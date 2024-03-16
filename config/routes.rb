@@ -23,4 +23,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+post "susus/:id/accept_invite", to: "susus#accept_invite", as: :accept_invite
 end
