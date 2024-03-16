@@ -19,7 +19,27 @@ class MessagesController < ApplicationController
 
 private
 
+def accept
+  @member = Member.find(params[:id]) # Assuming you have a Member model
+  # Logic to accept a member
+  if @member.update(status: 'accepted') # Assuming you have a 'status' attribute in your Member model
+    redirect_to members_path, notice: 'Member accepted successfully.'
+  else
+    redirect_to members_path, alert: 'Failed to accept member.'
+  end
+end
+
+def decline
+  @member = Member.find(params[:id]) # Assuming you have a Member model
+  # Logic to decline a member
+  if @member.update(status: 'declined') # Assuming you have a 'status' attribute in your Member model
+    redirect_to members_path, notice: 'Member declined successfully.'
+  else
+    redirect_to members_path, alert: 'Failed to decline member.'
+  end
+end
+end   
+
   def message_params
     params.require(:message).permit(:content)
   end
-end
