@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :susus, except: [:edit, :destroy, :update] do
     resources :messages, only: %i[index create]
-    resources :deposits, only: %i[new create show]
+    resources :deposits, only: %i[new create]
     resources :members, only: %i[index new create]
     resources :users, only: %i[index]
 
