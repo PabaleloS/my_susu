@@ -1,0 +1,66 @@
+
+#user_list_card{
+  margin-left: -40px;
+  // display:flex;
+  // flex-direction: row;
+  // border-radius: 10px;
+  align-items: center;
+  padding: 10px;
+
+
+
+  // height: 100px;
+  background-color: white;
+  margin-bottom: 20px;
+
+  li{
+    list-style: none;
+  }
+
+  #_user_text{
+
+    // padding-top: 10px;
+    margin-left: 10px;
+    // margin-right: 40px;
+
+    h6{
+      color: #000;
+      font-family: Inter;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    p{
+      color: #000;
+      font-family: Inter;
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 200;
+      line-height: normal;
+      margin-right: 2px;
+      margin-top: -4px;
+      // margin-left: 5px;
+    }
+
+  }
+
+}
+
+
+#set_user_width{
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+  // background-color: aqua;
+  width: 100%;
+}
+
+#name_div{
+  width: 180px;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
