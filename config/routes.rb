@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'paystack/callback'
+  get 'paystack/webhook'
   devise_for :users
   root to: "susus#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -25,4 +27,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
 post "susus/:id/accept_invite", to: "susus#accept_invite", as: :accept_invite
+
+post '/paystack/callback', to: 'paystack#callback'
+post '/paystack/webhook', to: 'paystack#webhook'
 end
