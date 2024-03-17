@@ -75,4 +75,8 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+
+ENV['PAYSTACK_PUBLIC_KEY'] = 'pk_test_df92dce9b128be2c60000587dcefce7fba610d39'
+ENV['PAYSTACK_SECRET_KEY'] = 'sk_test_804c2ce8b1617a1970694fc4e2ae62d058a636a8'
 end
