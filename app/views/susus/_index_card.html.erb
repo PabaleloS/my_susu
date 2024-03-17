@@ -31,7 +31,7 @@
         <div id="invite_detail">
           <div class="avatar_i">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
-            <p>Invited You to this susu</p>
+            <p> <% susu.user.first_name %> Invited You to this susu</p>
           </div>
           <%= button_to "Join", accept_invite_path(susu), class: "btn btn-light" %>
         </div>

@@ -21,6 +21,7 @@ class MembersController < ApplicationController
   end
 
   def new
+
     @susu = Susu.find(params[:susu_id])
     @users_not_in_susu = User.where.not(id: @susu.members.pluck(:user_id))
   end
@@ -48,7 +49,9 @@ class MembersController < ApplicationController
                           join_date: Date.today)
     member.save
     end
-    redirect_to root_path, notice: "Members were successfully added."
+    redirect_to susu_path(params[:id]), notice: "Members were successfully added."
+
+    # redirect_to susu_path(params[:susu_id]), notice: "Members were successfully added."
   end
 
   def accepted
