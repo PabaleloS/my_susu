@@ -8,7 +8,7 @@
       <div id="header_user">
         <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
         <div id="header_user_text">
-          <h6><%= @susu.user.first_name %> <%= @susu.user.last_name %></h6>
+          <h6><%= current_user.first_name %> <%= current_user.last_name %></h6>
           <p> Welcome back! 🌟</p>
           <%#= @susu.balance %>
         </div>
@@ -17,7 +17,7 @@
       <img width="20" height="20" src="https://img.icons8.com/ios/50/appointment-reminders--v1.png" alt="alert"/>
     </div>
 
-    <%= button_to "disburse", disburse_path(@susu) %>
+    <%#= button_to "disburse", disburse_path(@susu) %>
     <%= render partial: 'susus/show_card', susu: @susu %>
     <br>
 
@@ -32,7 +32,7 @@
             <h6> <%= member.user.first_name %>  </h6>
             <p> <%= member.user.updated_at.strftime('%Y-%m-%d') %></p>
             <p> Balance: <%= member.balance %></p>
-            <p>Has received disbursal in this cycle: <%= member.has_received_disbursement %></p>
+           <!-- <p>Has received disbursal in this cycle: <%#= member.has_received_disbursement %></p>-->
           </div>
         </div>
         <img width="33" height="41" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710414522/twgfu6nrs9zg1gungee0.png" alt="leaderboard"/>
@@ -40,6 +40,7 @@
       <% end %>
     </div>
     <% elsif @pending_members.present? %>
+
     <% @pending_members.each do |member| %>
     <div id="next_withdraw_big_card">
       <p> Pending Members </p>

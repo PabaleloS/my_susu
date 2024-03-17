@@ -1,14 +1,46 @@
-<div data-search-users-target="users_list">
+ <div data-search-users-target="users_list">
   <%= form_with url: create_members_path(@susu) do |f| %>
-    <ul>
+  <ul>
       <% users.each do |user| %>
-        <li>
-          <%= f.check_box :member_ids, {multiple: true}, user.id, nil %>
-          <%= user.first_name %>
-        </li>
-      <% end %>
-    </ul>
 
-    <%= f.submit "Add Members" %>
-  <% end %>
+        <div id="user_list_card">
+
+          <li>
+              <div id="set_user_width">
+
+                <div id="name_div">
+                  <img width="44" height="53" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710413992/knanllixywtz69qieml5.png" alt="susu_member"/>
+
+                  <div id="_user_text">
+                    <h6><%= user.first_name %> <%= user.last_name %>  </h6>
+                    <P><%= user.email %> </P>
+                  </div>
+
+                  </div>
+
+                  <div>
+                    <%= f.check_box :member_ids, {multiple: true}, user.id, nil %>
+                  </div>
+
+              </div>
+
+          </li>
+
+        </div>
+    <!--    </div>-->
+
+        <% end %>
+      </ul>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+   
+
+  <div id="next_button">
+    <%= f.submit "Add members", class: "btn btn-secondary btn-lg btn-block btn-orange", style: "font-weight: bold; color: white;  height: 63px; flex-shrink: 0; margin: auto;" %>
+    <% end %>
+  </div>
 </div>
