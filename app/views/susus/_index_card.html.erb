@@ -1,12 +1,10 @@
 <br>
 
 <% invitation_found = false %>
-<% if @susus.any? %>
-  <% @susus.each do |susu| %>
-    <% if @member.status == "pending" %>
+<% if @pending_susus.any? %>
+  <% @pending_susus.each do |susu| %>
       <% invitation_found = true %>
       <% break %> <!-- Exiting loop once a pending invitation is found -->
-    <% end %>
   <% end %>
   <% if invitation_found %>
     <p>Your susu invitations</p>
@@ -18,36 +16,34 @@
   <!--<p>Your Susu List</p>-->
 <% end %>
 
-<% if @susus.any? %>
-  <% @susus.each do |susu| %>
-    <% if @member.status == "pending" %>
-      <div class="invite-card">
-        <div id="invite_group_banner">
-          <div id="susu_title">
-            <h6><%= link_to susu.name, susu_path(susu) %></h6>
-            <p><%= susu.members.count %> members join today</p>
-          </div>
+<% if @pending_susus.any? %>
+  <% @pending_susus.each do |susu| %>
+    <div class="invite-card">
+      <div id="invite_group_banner">
+        <div id="susu_title">
+          <h6><%= link_to susu.name, susu_path(susu) %></h6>
+          <p><%= susu.members.count %> members join today</p>
         </div>
-        <div id="invite_detail">
-          <div class="avatar_i">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
-            <p> <% susu.user.first_name %> Invited You to this susu</p>
-          </div>
-          <%= button_to "Join", accept_invite_path(susu), class: "btn btn-light" %>
-        </div>
+        <%= button_to "decline", decline_invite_path(susu), class: "btn btn-light" %>
       </div>
-    <% else %>
-      <!-- No susu invitations -->
-    <% end %>
+      <div id="invite_detail">
+        <div class="avatar_i">
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+          <p> <% susu.user.first_name %> Invited You to this susu</p>
+        </div>
+        <%= button_to "Join", accept_invite_path(susu), class: "btn btn-light" %>
+      </div>
+    </div>
+    <!-- No susu invitations -->
   <% end %>
 <% else %>
+  <h2> No susu invitiations </h2>
   <!-- <p>No susus available.</p> -->
 <% end %>
 
 
-<% if @susus.any? %>
-  <% @susus.each do |susu| %>
-    <% if @member.status == "accepted" %>
+<% if @accepted_susus.any? %>
+  <% @accepted_susus.each do |susu| %>
       <div class="invite-card">
         <div id="invite_group_banner">
           <div id="susu_title">
@@ -64,9 +60,6 @@
           <%#= button_to "enter", susu_path(susu), class: "btn btn-light" %>
         </div>
       </div>
-    <% else %>
-      <!-- No susu invitations -->
-    <% end %>
   <% end %>
 <% else %>
   <!-- <p>No susus available.</p> -->

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
 post "susus/:id/accept_invite", to: "susus#accept_invite", as: :accept_invite
+post "susus/:id/decline_invite", to: "members#declined", as: :decline_invite
 
 post '/paystack/callback', to: 'paystack#callback'
 post '/paystack/webhook', to: 'paystack#webhook'

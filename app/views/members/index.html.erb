@@ -1,29 +1,44 @@
 <br>
   <div class="container">
-  <br>
     <div id="page_main">
+      <div class="members_container">
 
+      <a href="#" onclick="history.back(); return false;"><img src="https://img.icons8.com/fluency-systems-filled/48/long-arrow-left.png"/></a>
+      <br>
+      <br>
       <div id="header_div">
         <h1><%= @susu.name %></h1>
       </div>
-        <br>
-      <div class="members">
+      <br>
+
+      <div id="members_big_card">
         <% @members.each do |member| %>
-          <div class="card">
-            <div class="card-body">
+          <div id="user_list_card">
+            <div id="members_body">
               <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
-              <h5 class="card-title"><%= member.user.first_name %></h5>
+              <div id="members_user_text">
+              <h5><%= member.user.first_name %></h5>
+              <div>
               <% if @last_deposits[member.id] %>
                 <p>Last Deposit Date: <%= @last_deposits[member.id][:date] %></p>
                 <p>Last Deposit Amount: <%= @last_deposits[member.id][:agree_amount] %></p>
               <% else %>
                 <p>No deposits yet.</p>
               <% end %>
+              </div>
+              </div>
             </div>
           </div>
         <% end %>
-<%= link_to "Invite New Member", new_susu_member_path(@susu), class: "btn btn-primary" %>
-</div>
-
-  </div>
-</div>
+        <br>
+        <div style="text-align: center;">
+        <br>
+        </div>
+        <br>
+        <br>
+        </div>
+        </div>
+        <br>
+        <br>
+        </div>
+        </div>
