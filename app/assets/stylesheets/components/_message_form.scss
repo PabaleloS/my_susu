@@ -1,8 +1,12 @@
-.container {
-  max-height: fit-content;
+.form-container {
+  position: fixed;
+  right: 0;
+  bottom: 75px;
+  left: 0;
+  z-index: 1030;
 }
 
-// li
-// ls{
-
-// }
+.messages-container {
+  overflow-y: scroll;
+  height: 75vh;
+}
