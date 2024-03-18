@@ -34,6 +34,7 @@ class DepositsController < ApplicationController
     @deposit.date = Date.today
     @susu.balance ||= 0
     @susu.balance += @susu.agree_amount
+    # @user.balance  -= @deposit.amount
 
     if @deposit.save && @susu.save
 
