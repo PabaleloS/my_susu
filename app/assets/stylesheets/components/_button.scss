@@ -37,3 +37,16 @@
   .extra-rounded {
     border-radius: 0 15px 15px 0;
   }
+
+
+  .btn-blue {
+    background-color: #007bff; /* Blue color used in Bootstrap */
+    border-color: #007bff; /* Border color */
+    color: #fff; /* Text color */
+}
+
+.btn-blue:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    border-color: #0056b3; /* Darker border color on hover */
+    color: #fff; /* Text color on hover */
+}

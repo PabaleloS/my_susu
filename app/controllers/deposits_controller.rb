@@ -1,5 +1,3 @@
-
-
 class DepositsController < ApplicationController
   before_action :authenticate_user!
 
@@ -14,8 +12,12 @@ class DepositsController < ApplicationController
 
   def show
     @deposit = Deposit.find(params[:id])
-    # @deposits = @susu.deposits.includes(:user)
+    @member = @deposit.member
+    @susu = @deposit.susu
+
   end
+
+  def success; end
 
   def create
     @current_user = current_user
@@ -34,11 +36,12 @@ class DepositsController < ApplicationController
     @susu.balance += @susu.agree_amount
 
     if @deposit.save && @susu.save
-      redirect_to deposit_path(@susu, @deposit), notice: "Deposit was successfully added."
-      # render json: { status: 'success' }
+
+      redirect_to susu_deposit_path(@susu, @deposit), notice: "Deposit was successfully added."
+
     else
+      # raise "Deposit not saved: #{@deposit}, errors: #{@deposit&.errors&.full_messages}"
       render :new
-      # render json: { status: 'error', errors: @deposit.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -48,4 +51,5 @@ class DepositsController < ApplicationController
   def deposit_params
     params.require(:deposit).permit(:agree_amount)
   end
+
 end
