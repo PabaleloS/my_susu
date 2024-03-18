@@ -2,6 +2,7 @@ class SususController < ApplicationController
 
   def index
       @user = current_user
+      @member = Member.find(params[:id])
       @members = @user.members
       # @susus = @members.susus
       @pending_susus = Susu.joins(:members).where(members: { user_id: current_user, status: 'pending' })
