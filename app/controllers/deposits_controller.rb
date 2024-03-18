@@ -12,10 +12,9 @@ class DepositsController < ApplicationController
     @susu.balance ||= 0
   end
 
-
   def show
     @deposit = Deposit.find(params[:id])
-
+    # @deposits = @susu.deposits.includes(:user)
   end
 
   def create
