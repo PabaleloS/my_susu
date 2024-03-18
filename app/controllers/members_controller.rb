@@ -64,15 +64,15 @@ class MembersController < ApplicationController
     end
   end
 
-  # def declined
-  #   member = Member.find_by(susu_id: params[:susu_id], user_id: params[:user_id])
-  #   if member
-  #     member.update(status: "declined")
-  #     redirect_to susu_path(params[:susu_id]), notice: "Member declined ."
-  #   else
-  #     redirect_to susu_path(params[:susu_id]), notice: "Member not found."
-  #   end
-  # end
+  def declined
+    member = Member.find_by(user_id: current_user, susu_id: params[:id])
+    if member
+      member.update(status: "declined")
+      redirect_to root_path, notice: "Member declined."
+    else
+      redirect_to root_path, notice: "Member not found."
+    end
+  end
 
   def update
     @member = current_user.member.find_by(susu_id: params[:susu_id])

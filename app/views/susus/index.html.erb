@@ -22,12 +22,10 @@
 
 
             <% invitation_found = false %>
-            <% if @susus.any? %>
-              <% @susus.each do |susu| %>
-                <% if @member.status == "accepted" %>
+            <% if @accepted_susus.any? %>
+              <% @accepted_susus.each do |susu| %>
                   <% invitation_found = true %>
                   <% break %> <!-- Exiting loop once a pending invitation is found -->
-                <% end %>
               <% end %>
               <% if invitation_found %>
 
