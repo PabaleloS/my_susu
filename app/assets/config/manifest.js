@@ -7,3 +7,4 @@
 //= link application.css
 //= link susu_show.js
 //= link paystack.js
+//= link page_reload.js

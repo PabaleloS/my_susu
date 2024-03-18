@@ -3,21 +3,26 @@
   <head>
     <title>MySusu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= javascript_include_tag 'paystack' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= javascript_include_tag 'susu_show' %>
-    <%= javascript_include_tag 'paystack' %>
-
+    <%= javascript_include_tag 'page_reload' %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
   </head>
 
   <body class="<%= controller_name %> <%= action_name %>">
-    <%= render "shared/flashes" %>
+    <div class="d-flex flex-column min-vh-100">
+      <%= render "shared/flashes" %>
+      <article class="flex-grow-1">
+        <%= yield %>
+      </article>
+      <% if @susu %>
+        <%= render "shared/navbar", class: "row" %>
+      <% end %>
+    </div>
     <script src="https://js.paystack.co/v1/inline.js"></script>
-    <%= yield %>
-    <br>
   </body>
 </html>

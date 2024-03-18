@@ -12,10 +12,9 @@ class DepositsController < ApplicationController
     @susu.balance ||= 0
   end
 
-
   def show
     @deposit = Deposit.find(params[:id])
-
+    # @deposits = @susu.deposits.includes(:user)
   end
 
   def create
@@ -32,14 +31,14 @@ class DepositsController < ApplicationController
     @deposit.member = member
     @deposit.date = Date.today
     @susu.balance ||= 0
-    @susu.balance += @deposit.agree_amount
+    @susu.balance += @susu.agree_amount
 
     if @deposit.save && @susu.save
       redirect_to deposit_path(@susu, @deposit), notice: "Deposit was successfully added."
-      render json: { status: 'success' }
+      # render json: { status: 'success' }
     else
       render :new
-      render json: { status: 'error', errors: @deposit.errors.full_messages }, status: :unprocessable_entity
+      # render json: { status: 'error', errors: @deposit.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
