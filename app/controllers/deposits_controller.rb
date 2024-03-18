@@ -1,7 +1,8 @@
+
+
 class DepositsController < ApplicationController
   before_action :authenticate_user!
 
-  # commented out because the form will come from the popup modal in the susus#show
   def new
     puts "Params: #{params.inspect}"
     @susu = Susu.find(params[:susu_id])
@@ -11,14 +12,14 @@ class DepositsController < ApplicationController
     @susu.balance ||= 0
   end
 
-  # this should be in the susu controller so member can see their deposits
+
   def show
     @deposit = Deposit.find(params[:id])
-    # @deposits = @susu.deposits.includes(:user)
 
   end
 
   def create
+    @current_user = current_user
     @susu = Susu.find(params[:susu_id])
     @deposit = @susu.deposits.new(deposit_params)
     member = @susu.members.find_by(user_id: current_user.id)
@@ -35,32 +36,13 @@ class DepositsController < ApplicationController
 
     if @deposit.save && @susu.save
       redirect_to deposit_path(@susu, @deposit), notice: "Deposit was successfully added."
-    #   redirect_to susu_deposits_url(@susu, @deposit), notice: "Deposit was successfully added."
+      render json: { status: 'success' }
     else
       render :new
+      render json: { status: 'error', errors: @deposit.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
-
-
-
-
-
-  # def create
-  #   @susu = Susu.find(params[:susu_id])
-  #   # @deposit = @susu.deposits.new(deposit_params)
-  #   # @deposit = Deposit.new(deposit_params)
-  #   @deposit = @susu.deposits.new(deposit_params)
-  #   member = @susu.members.find_by(user_id: current_user.id)
-  #   # member = Member.find_by(susu: @susu, user_id: current_user.id)
-  #   @deposit.member = member
-  #   # @deposit.susu = @susu
-  #   @deposit.date = Date.today
-  #   @susu.balance += @deposit.agree_amount
-  #   if @deposit.save! && @susu.save!
-  #     redirect_to susu_deposit_path(@susu, @deposit), notice: "Deposit was successfully added."
-  #   end
-  # end
 
   private
 

@@ -6,3 +6,4 @@
 //= link bootstrap.min.js
 //= link application.css
 //= link susu_show.js
+//= link paystack.js

@@ -9,11 +9,14 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= javascript_include_tag 'susu_show' %>
+    <%= javascript_include_tag 'paystack' %>
+
+
   </head>
 
   <body class="<%= controller_name %> <%= action_name %>">
-  <%= render "shared/flashes" %>
-
+    <%= render "shared/flashes" %>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
     <%= yield %>
     <br>
   </body>
