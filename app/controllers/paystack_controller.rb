@@ -26,8 +26,6 @@ class PaystackController < ApplicationController
     end
 
 
-
-
     def webhook
       head :ok
     end
