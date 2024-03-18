@@ -2,33 +2,13 @@
   <div class="container">
     <br>
       <div id="page_main">
-      <div class="deposit">
-        <h1 style="text-align: center;">New Deposit</h1>
+      <div class="deposit" data-controller="deposit">
 
-
-
-      <%= form_with(model: @deposit, url: susu_deposits_path(@susu), id: 'paymentForm', data: { current_user: @current_user.to_json }) do |form| %>
-        <% hidden_fields = {
-                  email: current_user.email,
-                } %>
-                <%= form.hidden_field :user_info, value: hidden_fields.to_json %>
-
-                <div class="form-group" style="text-align: center;">
-                <%= form.hidden_field :agree_amount_input, value: @susu.agree_amount, id: 'agree_amount_input' %>
-                  <%= form.label :agree_amount, "Agreed Amount" %>
-                  <p style="font-size: 24px;"><%= @susu.agree_amount %></p>
-                </div>
-
-                <div style="text-align: center; margin-top:20px;">
-
-
-
-                  <%= form.submit "Make Deposit", class: "track-button" %>
-                </div>
-              <% end %>
-
-
-
-</div>
+      <div class="card mb-3 bg-white shadow-sm p-3">
+        <%= render partial: 'deposits/new' %>
       </div>
+
+    </div>
+    </div>
+
   </div>

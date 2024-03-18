@@ -1,16 +1,18 @@
 <div class="container">
   <div id="page_main">
     <div class="success-message">
-      <p><strong style="font-size: 24px;">Payment confirmed:</strong></p>
-      <p><span>Great news! Your mySusu</span> <span>account has been credited</span> <span>with <%= @deposit.agree_amount %> successfully.</span></p>
+
+    <p style="font-size: 12px;"> Payment ID: 00<%= @deposit.id %></p>
+      <p><strong style="font-size: 24px;">Payment confirmed </strong></p>
+      <p><span>Great news! Your mySusu</span> <span>account has been credited</span> <span>with ZAR <%= @deposit.agree_amount %> successfully.</span></p>
     </div>
 
     <br>
 
     <h4 style="text-align: left;">Transaction Details:</h4>
     <ul style="padding-left: 40px;">
-      <li><strong>Amount:</strong> <%= @deposit.agree_amount %></li>
-      <li><strong>Date:</strong> March 15, 2024</li>
+      <li><strong>Amount:</strong> ZAR <%= @deposit.susu.agree_amount %></li>
+      <li><strong>Date:</strong>  <%= @deposit.date %> </li>
     </ul>
 
     <br>
@@ -20,12 +22,13 @@
     <br>
 
     <br>
+    <br>
+     <br>
 
     <br>
 
     <br>
 
-    <br>
 
     <h6 style="text-align: center;">Thanks for using mySusu! 🎉</h6>
     <div style="text-align: center; margin-top: 20px;">
