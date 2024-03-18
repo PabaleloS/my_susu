@@ -4,20 +4,50 @@
       <div id="page_main">
       <div class="deposit">
         <h1 style="text-align: center;">New Deposit</h1>
-        <!--<p>Agreed Amount: <%#= @agreed_amount.inspect %></p>-->
-        <%= form_with(model: @deposit, url: susu_deposits_path(@susu)) do |form| %>
-        <div class="form-group " style="text-align: center;">
-          <!-- Hidden field for the amount with set value -->
-          <%= form.hidden_field :agree_amount, value: @agreed_amount %>
-          <!-- Display the agreed amount -->
-          <%= form.label :agree_amount, "Agreed Amount" %>
-          <p style="font-size: 24px;"><%= @agreed_amount %></p>
-        </div>
-        <div style="text-align: center; margin-top:20px;">
 
-        <%= form.submit "Make Deposit", class: "track-button" %>
+
+
+      <%= form_with(model: @deposit, url: susu_deposits_path(@susu), id: 'paymentForm', data: { current_user: @current_user.to_json }) do |form| %>
+        <% hidden_fields = {
+                  email: current_user.email,
+                } %>
+                <%= form.hidden_field :user_info, value: hidden_fields.to_json %>
+
+                <div class="form-group" style="text-align: center;">
+                <%= form.hidden_field :agree_amount_input, value: @susu.agree_amount, id: 'agree_amount_input' %>
+                  <%= form.label :agree_amount, "Agreed Amount" %>
+                  <p style="font-size: 24px;"><%= @susu.agree_amount %></p>
+                </div>
+
+                <div style="text-align: center; margin-top:20px;">
+
+
+
+                  <%= form.submit "Make Deposit", class: "track-button" %>
+                </div>
+              <% end %>
+
+
+
+
+        <%#= form_with(model: @deposit, url: susu_deposits_path(@susu), id: 'paymentForm') do |form| %>
+        <%# hidden_fields = {
+          email: current_user.email,
+        } %>
+        <%#= form.hidden_field :user_info, value: hidden_fields.to_json %>
+<!--
+        <div class="form-group" style="text-align: center;">
+          <%#= form.hidden_field :agree_amount, value: @agreed_amount %>-->
+          <%#= form.label :agree_amount, "Agreed Amount" %>
+<!--          <p style="font-size: 24px;"><%#= @agreed_amount %></p>
         </div>
-<% end %>
+
+        <div style="text-align: center; margin-top:20px;">
+          <%#= form.submit "Make Deposit", class: "track-button" %>-->
+<!--        </div>-->
+    <%# end %>
+
+
 </div>
       </div>
   </div>

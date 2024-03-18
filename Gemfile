@@ -55,7 +55,8 @@ gem 'faker', '~> 2.18', require: false
 
 
 group :development, :test do
-  gem "dotenv-rails"
+  # gem "dotenv-rails"
+  gem 'dotenv-rails', groups: [:development, :test]
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
 end
@@ -72,6 +73,8 @@ group :development do
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end
+# gem 'dotenv-rails', groups: [:development, :test]
+gem 'paystack', '~> 0.1.10'
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
