@@ -1,6 +1,5 @@
 <br>
   <div class="container">
-  <br>
     <div id="page_main">
       <div class="members_container">
 
@@ -10,7 +9,7 @@
       <div id="header_div">
         <h1><%= @susu.name %></h1>
       </div>
-        <br>
+      <br>
 
       <div id="members_big_card">
         <% @members.each do |member| %>
@@ -33,9 +32,13 @@
         <% end %>
         <br>
         <div style="text-align: center;">
-        <%= link_to "Invite New Member", new_susu_member_path(@susu), class: "track-button" %>
+        <br>
+        </div>
+        <br>
+        <br>
         </div>
         </div>
-        </div>
+        <br>
+        <br>
         </div>
         </div>
