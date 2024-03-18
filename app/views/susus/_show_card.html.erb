@@ -21,13 +21,15 @@
         </div>
 
         <div id="top_btn">
-          <%#= button_to "disburse", disburse_path(@susu) %>
           <p><%= button_to "disburse", disburse_path(@susu), class: "btn btn-link no-underline" %></p>
         </div>
 
         <div id="top_btn">
-          <p><%= link_to "Topup", new_susu_deposit_path(@susu), class: "no-underline" %></p>
-        </div>
+        <p><%= link_to "Topup", "#{new_susu_deposit_path(@susu)}?timestamp=#{Time.current.to_i}", class: "no-underline", id: "reload-link" %></p>
+
+      <!--  <p><%#= link_to "Topup", new_susu_deposit_path(@susu, timestamp: Time.current.to_i), class: "no-underline", id: "reload-link" %></p>
+-->
+</div>
 
         </div>
       </div>
