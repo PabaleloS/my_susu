@@ -18,4 +18,8 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
-
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('icon').addEventListener('click', function() {
+    document.getElementById('messageForm').submit();
+  });
+});
