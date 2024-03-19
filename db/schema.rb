@@ -20,14 +20,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_211140) do
     t.bigint "susu_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "agree_amount"
+    t.float "agree_amount", default: 0.0
     t.index ["member_id"], name: "index_deposits_on_member_id"
     t.index ["susu_id"], name: "index_deposits_on_susu_id"
   end
 
   create_table "members", force: :cascade do |t|
     t.bigint "susu_id", null: false
-    t.float "balance"
+    t.float "balance", default: 0.0
     t.date "join_date"
     t.bigint "user_id", null: false
     t.integer "status"
@@ -53,7 +53,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_211140) do
     t.bigint "user_id", null: false
     t.string "name"
     t.text "description"
-    t.float "balance"
+    t.float "balance", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "agree_amount"
