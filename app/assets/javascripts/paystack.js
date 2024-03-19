@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function() {
   const paymentForm = document.getElementById('paymentForm');
   if (paymentForm) {
@@ -7,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 async function payWithPaystack(e) {
   e.preventDefault();
+  
 
   const current_user = document.getElementById('paymentForm').getAttribute('data-current-user');
   let userEmail = "test@gmail.com";
@@ -37,6 +39,8 @@ async function payWithPaystack(e) {
     currency: 'ZAR',
     onClose: function() {
       triggerClassMethod();
+      // Redirect to the create action in your Rails app
+      window.location.href = "/susus/" + document.getElementById('paymentForm').getAttribute('data-susu-id') + "/deposits/new";
     },
     callback: function(response) {
       triggerClassMethod();
@@ -73,8 +77,6 @@ function triggerClassMethod() {
     },
     error: function(xhr, status, error) {
       console.error('Error triggering class method:', error);
-    }
+    },
   });
 }
-
-
