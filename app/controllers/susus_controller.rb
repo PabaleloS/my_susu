@@ -18,7 +18,7 @@ class SususController < ApplicationController
       end
 
       @pending_susus = Susu.joins(:members).where(members: { user_id: current_user, status: 'pending' })
-      @accepted_susus = @member.present? ? Susu.joins(:members).where(members: { user_id: current_user, status: 'accepted' }) : []
+      @accepted_susus = Susu.joins(:members).where(members: { user_id: current_user, status: 'accepted' })
       @declined_susus = Susu.joins(:members).where(members: { user_id: current_user, status: 'declined' })
 end
 

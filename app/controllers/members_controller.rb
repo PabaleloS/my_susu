@@ -4,7 +4,9 @@ class MembersController < ApplicationController
   def index
     @susu = Susu.find(params[:susu_id])
     # Retrieves members specific to the Susu group being viewed
-    @members = @susu.members
+    # @members = @susu.members
+    @members = @susu.members.includes(:deposits).order('deposits.created_at DESC NULLS LAST')
+
     # Fetch the last deposit date and amount for each member
     @last_deposits = {}
     @members.each do |member|
