@@ -21,9 +21,13 @@
         <%= yield %>
       </article>
 
-      <% if @susu.present? %>
+      <% if @susu.present? && !(controller_name == 'messages' && action_name == 'index') %>
         <%= render "shared/navbar", class: "row" %>
-     <% end %>
+      <% end %>
+
+      <%# if @susu.present? %>
+        <%#= render "shared/navbar", class: "row" %>
+     <%# end %>
     </div>
     <!--to make the alert disappear after some time -->
     <%#= render 'layouts/flash_alerts' %>
