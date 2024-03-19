@@ -1,20 +1,13 @@
 <br>
 <!---->
 <% invitation_found = false %>
-<% if @pending_susus.any? %>
-  <% @pending_susus.each do |susu| %>
-      <% invitation_found = true %>
-      <% break %> <!-- Exiting loop once a pending invitation is found -->
-  <% end %>
-  <% if invitation_found %>
-    <p>Your susu invitations</p>
-  <% else %>
-    <p>Your Susu List</p>
-  <% end %>
+<% if @pending_susus.any? || @accepted_susus.any? %> <!-- Check for both pending and accepted invitations -->
+  <% invitation_found = true %>
+  <p>Your susu List</p>
 <% else %>
   <p>No susu invitations</p>
-<!--  <p>Your Susu List</p>-->
 <% end %>
+
 <!---->
 <% if @pending_susus.any? %>
   <% @pending_susus.each do |susu| %>
