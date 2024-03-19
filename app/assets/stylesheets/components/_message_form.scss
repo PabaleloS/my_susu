@@ -8,5 +8,15 @@
 
 .messages-container {
   overflow-y: scroll;
-  height: 75vh;
+  height: 80vh;
+  background-color: #FFD23F;
+}
+
+.nav {
+  padding: 5px;
+  margin-top: 2px;
+}
+
+.page-content {
+  border-radius: 10px;
 }
