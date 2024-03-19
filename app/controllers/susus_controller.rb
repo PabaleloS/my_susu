@@ -27,7 +27,7 @@ class SususController < ApplicationController
   end
 
   def new
-    @susu = Susu.new
+    @new_susu = Susu.new
     @user = current_user
   end
 
