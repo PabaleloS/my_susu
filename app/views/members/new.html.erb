@@ -1,7 +1,7 @@
 <br>
 <div class="container">
 <br>
-  <div id="page_main1">
+  <div id="page_main">
 <!--  <div class="container new-susu-container">-->
       <div id="first">
         <div id="new_susu_header">
@@ -19,7 +19,6 @@
         <h2>Add members to </h2>
         <h2><strong> <%= @susu.name %> </strong></h2>
         <br>
-
 
         <div data-controller="search-users">
           <%= form_with url: susu_users_path(@susu), method: :get, html: {class: "mb-4", data: {search_users_target: "form"}} do |f| %>

@@ -1,20 +1,13 @@
 <br>
 <!---->
 <% invitation_found = false %>
-<% if @pending_susus.any? %>
-  <% @pending_susus.each do |susu| %>
-      <% invitation_found = true %>
-      <% break %> <!-- Exiting loop once a pending invitation is found -->
-  <% end %>
-  <% if invitation_found %>
-    <p>Your susu invitations</p>
-  <% else %>
-    <p>Your Susu List</p>
-  <% end %>
+<% if @pending_susus.any? || @accepted_susus.any? %> <!-- Check for both pending and accepted invitations -->
+  <% invitation_found = true %>
+  <p>Your susu List</p>
 <% else %>
   <p>No susu invitations</p>
-<!--  <p>Your Susu List</p>-->
 <% end %>
+
 <!---->
 <% if @pending_susus.any? %>
   <% @pending_susus.each do |susu| %>
@@ -28,7 +21,7 @@
       </div>
       <div id="invite_detail">
         <div class="avatar_i">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avata" %>
           <p> <% susu.user.first_name %> Invited You to this susu</p>
         </div>
         <%= button_to "Join", accept_invite_path(susu), class: "btn btn-light" %>
@@ -53,7 +46,7 @@
         </div>
         <div id="invite_detail">
           <div class="avatar_i">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avata" %>
             <p> And you are part of this susu</p>
           </div>
            <%= link_to "Open", susu_path(susu), class: "btn btn-light" %>

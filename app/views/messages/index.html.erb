@@ -1,39 +1,39 @@
-  <a href="#" onclick="history.back(); return false;"><img src="https://img.icons8.com/fluency-systems-filled/48/long-arrow-left.png"/></a>
+<a href="#" onclick="history.back(); return false;"><img src="https://img.icons8.com/fluency-systems-filled/48/long-arrow-left.png"/></a>
       <br>
 
 <div class="d-flex flex-column min-vh-120">
+<div class="messages-page">
   <div class="messages-container border p-3">
-    <div class="column no-gutters">
-      <div class="page-content">
-          <% @susu.messages.each do |message| %>
-            <div id="message-<%= message.id %>">
-              <div class="mb-3 mt-3">
-                <div class="card w-100">
-                  <div class="card-body bg-white">
-                    <img width="15" height="15" class="avatar-messages" src="https://kitt.lewagon.com/placeholder/users/ssaunier"/>
-                    <small>
-                      <strong><%= message.member.user.first_name %></strong>
-                      <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-                    </small>
-                    <p><%= message.content %></p>
-                  </div>
-                </div>
-              </div>
+    <% @susu.messages.each do |message| %>
+      <div id="message-<%= message.id %>">
+        <div class="mb-1 mt-2">
+          <div class="card w-100">
+            <div class="card-body bg-white">
+              <img width="15" height="15" class="avatar-messages" src="https://kitt.lewagon.com/placeholder/users/ssaunier"/>
+              <small>
+                <strong><%= message.member.user.first_name %></strong>
+                <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+              </small>
+              <p><%= message.content %></p>
             </div>
-          <% end %>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="form-container bg-white px-2 pt-2">
-    <%= simple_form_for [@susu, @message],
-        html: {class: "test d-flex"} do |f|
-      %>
-        <%= f.input :content,
-          label: false,
-          wrapper_html: { class: 'w-75 border border-warning' },
-          placeholder: "Message #{@susu.name}"
-        %>
-        <%= f.submit "Send", class: "extra-rounded btn btn-warning mb-3 w-25 text-white" %>
     <% end %>
   </div>
+
+  <div class="form-container">
+  <%= simple_form_for [@susu, @message], html: {class: "test d-flex", id: "messageForm"} do |f| %>
+  <div id="form2">
+  <%= f.input :content,
+      label: false,
+      wrapper_html: { class: 'no-default-style', id: 'messageInput' },
+      placeholder: "Message #{@susu.name}"
+    %>
+    <%= f.submit "Send", class: "extra-rounded btn btn-warning mb-3 w-25 text-white", style: "display: none;" %>
+  <% end %>
+  <img src="https://res.cloudinary.com/dvql3swac/image/upload/v1710846603/la5l47ytl9jlir1tg9km.png" id="icon" style="cursor: pointer; width: 50px; height: 50px;">
+  </div>
+ </div>
+
 </div>
