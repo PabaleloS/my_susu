@@ -20,9 +20,10 @@
       <article class="flex-grow-1">
         <%= yield %>
       </article>
-      <% if @susu %>
+
+      <% if @susu.present? %>
         <%= render "shared/navbar", class: "row" %>
-      <% end %>
+     <% end %>
     </div>
     <!--to make the alert disappear after some time -->
     <%#= render 'layouts/flash_alerts' %>
