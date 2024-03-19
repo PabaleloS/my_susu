@@ -17,28 +17,6 @@ class SususController < ApplicationController
     end
   end
 
-
-  def index
-      @user = current_user
-      @member = Member.find(params[:id])
-      @members = @user.members
-      # @susus = @members.susus
-      @pending_susus = Susu.joins(:members).where(members: { user_id: current_user, status: 'pending' })
-      @accepted_susus = Susu.joins(:members).where(members: { user_id: current_user, status: 'accepted' })
-      @declined_susus = Susu.joins(:members).where(members: { user_id: current_user, status: 'declined' })
-  end
-
-
-
-
-
-
-
-
-
-
-
-
   def show
     @susu = Susu.find(params[:id])
     @user = current_user
@@ -49,7 +27,7 @@ class SususController < ApplicationController
   end
 
   def new
-    @susu = Susu.new
+    @new_susu = Susu.new
     @user = current_user
   end
 
