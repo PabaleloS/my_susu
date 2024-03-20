@@ -13,4 +13,8 @@ class UsersController < ApplicationController
       format.text { render partial: "members/users_list", locals: { users: @users, susu: @susu }, formats: [:html] }
     end
   end
+
+  def article_params
+    params.require(:article).permit(:title, :body, :photo)
+  end
 end

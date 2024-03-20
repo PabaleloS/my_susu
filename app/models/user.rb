@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :members, dependent: :destroy
   has_many :susus, through: :members
   has_many :messages
+  has_one_attached :photo
 
   # enum status: ['pending', 'accepted', 'declined']
 end

@@ -15,9 +15,13 @@
         <% @members.each do |member| %>
           <div id="user_list_card">
             <div id="members_body">
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+              <% if member.user.photo.attached? %>
+                <%= cl_image_tag member.user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
+              <% else %>
+                <%= image_tag "placeholder.png", class: "styled-image" %>
+              <% end %>
               <div id="members_user_text">
-              <h5><%= member.user.first_name %></h5>
+                <%= member.user.first_name %></h5>
               <div>
               <% if @last_deposits[member.id] %>
                 <p>Last Deposit Date: <%= @last_deposits[member.id][:date] %></p>
