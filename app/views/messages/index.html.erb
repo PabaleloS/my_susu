@@ -1,39 +1,65 @@
-<a href="#" onclick="history.back(); return false;"><img src="https://img.icons8.com/fluency-systems-filled/48/long-arrow-left.png"/></a>
-      <br>
+<div class="container">
+  <br>
+  <div id="page_main">
 
-<div class="d-flex flex-column min-vh-120">
-<div class="messages-page">
-  <div class="messages-container border p-3">
-    <% @susu.messages.each do |message| %>
-      <div id="message-<%= message.id %>">
-        <div class="mb-1 mt-2">
-          <div class="card w-100">
-            <div class="card-body bg-white">
-              <img width="15" height="15" class="avatar-messages" src="https://kitt.lewagon.com/placeholder/users/ssaunier"/>
-              <small>
-                <strong><%= message.member.user.first_name %></strong>
-                <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-              </small>
-              <p><%= message.content %></p>
-            </div>
+    <div class="container susu"
+      data-controller="susu-subscription"
+      data-susu-subscription-susu-id-value="<%= @susu.id %>"
+      data-susu-subscription-current-user-id-value="<%= current_user.id %>"
+    >
+
+    <div id="message_header">
+
+      <a href="#" onclick="history.back(); return false;">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAZ0lEQVR4nO2WMQqAQAwE5xMR/f9LrETRxit8jsdJbKwsNIK306UaWJYlIMR9GmABeoKlCdiBMUpqwOrSDWglfRLF+ypWTXsLs0uTjwW/F9sl6k7yCEyxo8J99PpMkeJTXhZuOC5RPRnBEDtxjsnsowAAAABJRU5ErkJggg==">
+      </a>
+
+      <div id="img-online">
+        <img width="15" height="15" class="avatar-messages" src="https://kitt.lewagon.com/placeholder/users/ssaunier"/>
+
+        <div id="header_text">
+        <h4 style="font-size: 14px; font-weight: bold;"><%= @susu.name %></h4>
+        <div id="online">
+            <img width="10" height="10" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAABSElEQVR4nO2WzU4CQQzH5yVMBHaKD2OkVfQ9dOVhvPnByaN35cy2Gt8A9S3W9YZGU1wTQJn9YEY48E+azGXz2/477dSYjdZNzeGeBaZTEBxYphEIvWl8n3EATHHrESNvwOjhoAVCFyA0BqFPZzB+gNDNzv1+eymolc6RZXwtBM6FfmMZD2tBQbCXZ1AJOps99ipB20wEgu+1oVNwda0UVGtax16n7bLbLARbob4v6BT8srhlfFj8O8bOVptcKP/QvN4UO2zGu1Bgy3TryvglIPjJAaYsmNVC2WKrPbbRHxmnLqufA4JHa3i5mOJgYMHjhWBt8pUMEJVlvAoAPjdF0oHu95GgFIadhvn3Z7HqQgCrWAR+pH9bb/WhFBLqmmW0neCWZToru+xZwevSNS2jSasxxTpk8vVW53qmZx0OUYInXtfbjYwnfQE8tfSj5ibbywAAAABJRU5ErkJggg==">
+            <h6 style="font-size: 12px;"> online</h6>
           </div>
         </div>
       </div>
-    <% end %>
-  </div>
 
-  <div class="form-container">
-  <%= simple_form_for [@susu, @message], html: {class: "test d-flex", id: "messageForm"} do |f| %>
-  <div id="form2">
-  <%= f.input :content,
-      label: false,
-      wrapper_html: { class: 'no-default-style', id: 'messageInput' },
-      placeholder: "Message #{@susu.name}"
-    %>
-    <%= f.submit "Send", class: "extra-rounded btn btn-warning mb-3 w-25 text-white", style: "display: none;" %>
-  <% end %>
-  <img src="https://res.cloudinary.com/dvql3swac/image/upload/v1710846603/la5l47ytl9jlir1tg9km.png" id="icon" style="cursor: pointer; width: 50px; height: 50px;">
-  </div>
- </div>
+      <img width="15" height="15" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAU0lEQVR4nO3SMQqAMAxA0T/16tZ7mnoMRegkHTpoUPgPsjR/CgVJ0p8UYAUaEEDtb293XIvjNjWhow3CPaEjBuGW0DE6zZLQUXocE5/myU6S9FEnlhRSWlasNbcAAAAASUVORK5CYII=">
 
+    </div>
+
+      <div class="messages-container" data-susu-subscription-target="messages">
+
+        <% @susu.messages.each do |message| %>
+          <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+            <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+              <%= render "messages/message", message: message %>
+
+          </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="form-container">
+        <%= simple_form_for [@susu, @message],
+          html: { id: "messageForm", data: { action: "turbo:submit-end->susu-subscription#resetForm" }, class: "d-flex" } do |f|
+          %>
+
+          <div id="form2">
+            <%= f.input :content,
+                label: false,
+                wrapper_html: { class: 'no-default-style', id: 'messageInput' },
+                placeholder: " Say something...."
+            %>
+          </div>
+          <%= f.submit "", class: "icon-button mb-3" %>
+        <% end %>
+
+      </div>
+
+    </div>
+
+  </div>
 </div>
