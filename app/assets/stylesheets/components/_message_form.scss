@@ -5,16 +5,22 @@
   height: 20vh;
   margin: auto;
   justify-content: center;
-
+  background-color: #c3c5c591;
+  padding-top: 20px;
+  border: none;
+  border-color: transparent;
+}
 
   #form2{
     display: flex;
     flex-direction: row;
     background-color: #e9e6e6;
     border-radius: 20px;
-    height:fit-content;
+    height:max-content;
+    padding: 10px;
+
   }
-}
+
 
 .messages-container {
   display: flex;
@@ -22,7 +28,7 @@
   flex-grow: 1;
   height: 90vh;
   overflow-y: scroll;
-  background-color: #c3c5c591;
+  // background-color: #c3c5c591;
 }
 
 .nav {
@@ -58,4 +64,12 @@ textarea {
 .form-control {
   border-style: none;
   border-width: 0;
+  outline: none !important;
+  border-width: 0 !important;
+
+  .form-control:focus {
+    outline: none !important;
+    border-style: none !important;
+    border-width: 0 !important;
+  }
 }
