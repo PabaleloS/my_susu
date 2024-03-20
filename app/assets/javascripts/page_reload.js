@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function() {
   const reloadLink = document.getElementById("reload-link");
 
@@ -17,5 +18,3 @@ document.addEventListener("DOMContentLoaded", function() {
     console.error("Element with ID 'reload-link' not found!");
   }
 });
-
-

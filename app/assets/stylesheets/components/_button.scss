@@ -50,3 +50,21 @@
     border-color: #0056b3; /* Darker border color on hover */
     color: #fff; /* Text color on hover */
 }
+
+
+.icon-button {
+  background-image: url(https://res.cloudinary.com/dvql3swac/image/upload/v1710893257/jn5lahjolkvttuyblik5.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 20px;
+  background-color:none;
+}
+
+.icon-button:focus {
+  outline: none;
+}

@@ -1,0 +1,17 @@
+<div class="form-container">
+    <%= simple_form_for [@susu, @message],
+    html: { id: "messageForm", data: { action: "turbo:submit-end->susu-subscription#resetForm" }, class: "d-flex" } do |f|
+    %>
+
+    <div id="form2">
+        <%= f.input :content,
+          label: false,
+          wrapper_html: { class: 'no-default-style', id: 'messageInput' },
+          placeholder: " Say something...."
+    %>
+
+    <%= f.submit "", class: "icon-button mb-3" %>
+    <% end %>
+  </div>
+
+</div>

@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const fakeBalance = document.getElementById("fake_balance");
   const secretBalanceDiv = document.getElementById("secret_balance");
 
-  hideIcon.addEventListener("click", function() {
+  if (hideIcon) {
+    hideIcon.addEventListener("click", function() {
       if (secretBalanceDiv.style.display === "inline") {
           secretBalanceDiv.style.display = "block";
           fakeBalance.style.display = "none";
@@ -14,5 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
           fakeBalance.style.display = "inline";
           actualBalance.style.display = "none";
       }
-  });
+    });
+  }
+
 });

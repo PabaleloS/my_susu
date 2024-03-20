@@ -1,8 +1,8 @@
- <div data-search-users-target="users_list">
-  <%= form_with url: create_members_path(@susu) do |f| %>
-  <ul>
+<br>
+<div>
+  <div class="add-members-list-container" data-search-users-target="users_list">
+    <%= form_with url: create_members_path(@susu) do |f| %>
       <% users.each do |user| %>
-
         <div id="user_list_card">
 
           <li>
@@ -27,9 +27,14 @@
                   </div>
 
               </div>
-
-          </li>
-
+            </div>
+            <div class="form-group">
+              <%= f.check_box :member_ids, {multiple: true, class: "hide-checkbox" }, user.id, nil %>
+              <!--<div class="plus_button">-->
+                <%= f.label "member_ids_#{user.id}", "+" %>
+              <!--</div>-->
+            </div>
+          </div>
         </div>
     <!--    </div>-->
 
@@ -45,6 +50,7 @@
 
   <div id="next_button">
     <%= f.submit "Add members", class: "btn btn-secondary btn-lg btn-block btn-orange", style: "font-weight: bold; color: white;  height: 63px; flex-shrink: 0; margin: auto;" %>
+
     <% end %>
   </div>
 </div>
