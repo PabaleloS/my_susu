@@ -1,0 +1,19 @@
+.add-members-header {
+  display: flex;
+  align-items: baseline;
+  // border: 1px solid red;
+
+  h3 {
+    margin-left: 0.5rem;
+  }
+
+}
+
+.add-members-list-container {
+  height: 60vh;
+  overflow-y: scroll;
+}
+
+.add-members-list-container::-webkit-scrollbar {
+  display: none;
+}

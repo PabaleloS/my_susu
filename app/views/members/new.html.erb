@@ -1,51 +1,38 @@
-<br>
 <div class="container">
-<br>
   <div id="page_main">
-<!--  <div class="container new-susu-container">-->
-      <div id="first">
-        <div id="new_susu_header">
-          <div id="back_arrow">
+    <div id="new_susu_header">
+      <%= link_to :back do %>
+        <div id="back_arrow">
           <img width="48" height="48" src="https://img.icons8.com/fluency-systems-filled/48/long-arrow-left.png" alt="long-arrow-left"/>
-          </div>
-          <div id="menu_icon">
-          <img width="24" height="24" src="https://img.icons8.com/android/24/menu.png" alt="menu"/>
-          </div>
         </div>
-        <br>
-        <h2>Add members to </h2>
-        <h2><strong> <%= @susu.name %> </strong></h2>
-        <br>
-        <div data-controller="search-users">
-          <%= form_with url: susu_users_path(@susu), method: :get, html: {class: "mb-4", data: {search_users_target: "form"}} do |f| %>
-            <%= f.text_field :query,
-                              class: "form-control",
-                              placeholder: "Search for a user...",
-                              value: params[:query],
-                              data: {
-                                search_users_target: "input",
-                                action: "keyup->search-users#update"
-                              } %>
-          <% end %>
-          <div id="user_list_card">
-                                <div id="members_body">
-        <h6> Choose a user </h6>
-        <%= render "users_list", users: @users_not_in_susu %>
-        </div>
-        <br>
-        </div>
-        <br>
-        </div>
-        </div>
-        <br>
-          <script>
-            document.getElementById("back_arrow").addEventListener("click", function(event) {
-            event.preventDefault();
-            window.location.href = "../";
-            });
-      </script>
-
-        </div>
+      <% end %>
+      <div id="menu_icon">
+        <img width="24" height="24" src="https://img.icons8.com/android/24/menu.png" alt="menu"/>
+      </div>
     </div>
-
+    <br>
+    <div class='add-members-header'>
+      <p>Add members to </p>
+      <h3><strong><%= @susu.name %></strong></h3>
+    </div>
+    <div data-controller="search-users " id="search_users">
+      <%= form_with url: susu_users_path(@susu), method: :get, html: {class: "mb-2", data: {search_users_target: "form"}} do |f| %>
+        <%= f.text_field :query,
+                          class: "form-control",
+                          placeholder: "Search for a user...",
+                          value: params[:query],
+                          data: {
+                            search_users_target: "input",
+                            action: "keyup->search-users#update"
+                          } %>
+      <% end %>
+      <%= render "users_list", users: @users_not_in_susu %>
+    </div>
+  </div>
+<!--  <script>
+    document.getElementById("back_arrow").addEventListener("click", function(event) {
+    event.preventDefault();
+    window.location.href = "../";
+    });
+  </script>-->
 </div>
