@@ -4,8 +4,9 @@
   flex-direction: row;
   height: 20vh;
   margin: auto;
+  width: 100%;
   justify-content: center;
-  background-color: #c3c5c591;
+  // background-color: #c3c5c591;
   padding-top: 20px;
   border: none;
   border-color: transparent;
@@ -14,7 +15,7 @@
   #form2{
     display: flex;
     flex-direction: row;
-    background-color: #e9e6e6;
+    background-color: #fffafa;
     border-radius: 20px;
     height:max-content;
     padding: 10px;
@@ -28,7 +29,9 @@
   flex-grow: 1;
   height: 90vh;
   overflow-y: scroll;
+  width: 80%;
   // background-color: #c3c5c591;
+  margin: 0 auto;
 }
 
 .nav {
@@ -66,6 +69,7 @@ textarea {
   border-width: 0;
   outline: none !important;
   border-width: 0 !important;
+  height: 100%;
 
   .form-control:focus {
     outline: none !important;
