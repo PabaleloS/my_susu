@@ -2,7 +2,7 @@
   z-index: 1030;
   display: flex;
   flex-direction: row;
-  height: 20vh;
+  height: 0vh;
   margin: auto;
   width: 100%;
   justify-content: center;
@@ -27,11 +27,23 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  height: 90vh;
+  height: 75vh;
   overflow-y: scroll;
-  width: 80%;
+  width: 90%;
   // background-color: #c3c5c591;
   margin: 0 auto;
+
+
+  @media screen and (min-width: 768px) {
+    #messages-container{
+      overflow-y: scroll;
+      width: 60px;
+      // background-color: #c3c5c591;
+      margin: 0 auto;
+
+      height: 50vh;
+    }
+  }
 }
 
 .nav {
