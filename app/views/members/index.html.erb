@@ -1,33 +1,45 @@
 <br>
   <div class="container">
     <div id="page_main">
-      <div class="members_container">
-
-      <a href="#" onclick="history.back(); return false;"><img src="https://img.icons8.com/fluency-systems-filled/48/long-arrow-left.png"/></a>
-      <br>
-      <br>
+      <div class="members_container"><div id="new_susu_header">
+      <%= link_to :back do %>
+        <div id="back_arrow">
+          <img width="48" height="48" src="https://img.icons8.com/fluency-systems-filled/48/long-arrow-left.png" alt="long-arrow-left"/>
+        </div>
+      <% end %>
+      <div id="menu_icon">
+        <img width="24" height="24" src="https://img.icons8.com/android/24/menu.png" alt="menu"/>
+      </div>
+    </div>
+    <br>
       <div id="header_div">
-        <h1><%= @susu.name %></h1>
+        <h3>Track Contributions of <%= @susu.name %></h3>
       </div>
       <br>
-
-      <div id="members_big_card">
         <% @members.each do |member| %>
           <div id="user_list_card">
             <div id="members_body">
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+            <div class="member_details">
+              <% if member.user.photo.attached? %>
+                <%= cl_image_tag member.user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
+              <% else %>
+                <%= image_tag "placeholder.png", class: "styled-image" %>
+              <% end %>
               <div id="members_user_text">
               <h5><%= member.user.first_name %></h5>
               <div>
-              <% if @last_deposits[member.id] %>
-                <p>Last Deposit Date: <%= @last_deposits[member.id][:date] %></p>
-                <p>Last Deposit Amount: <%= @last_deposits[member.id][:agree_amount] %></p>
-              <% else %>
-                <p>No deposits yet.</p>
-              <% end %>
-              </div>
+                <% if @last_deposits[member.id] %>
+                  <p>Last Deposit Date: <%= @last_deposits[member.id][:date] %></p>
+                  <p>Last Deposit Amount: <%= @last_deposits[member.id][:agree_amount] %></p>
+                <% else %>
+                  <p>No deposits yet.</p>
+                <% end %>
               </div>
             </div>
+            </div>
+
+            </div>
+            <br>
           </div>
         <% end %>
         <br>

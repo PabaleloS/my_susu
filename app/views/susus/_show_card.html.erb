@@ -42,7 +42,7 @@
 
             <div id="inner_title_div">
 
-                <h3> <%= @susu.name%>  </h3>
+                <h3> <%= @susu.name %>  </h3>
 
                 <div id="button_div1">
 
@@ -56,10 +56,13 @@
             <div id="inner_avatars_div" >
 
               <p>Your Group </p>
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", style: "margin-left: -10px; border: 2px solid #D9D9D9;" %>
-
-
+                <% @susu.users.each do |user| %>
+                  <% if user.photo.attached? %>
+                    <%= cl_image_tag user.photo.key, class: "styled-image" %>
+                  <% else %>
+                    <%= image_tag "placeholder.png", class: "styled-image" %>
+                  <% end %>
+                <% end %>
             </div>
 
           </div>

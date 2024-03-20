@@ -21,7 +21,12 @@
       </div>
       <div id="invite_detail">
         <div class="avatar_i">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+          <% if user.photo.attached? %>
+            <%= cl_image_tag user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
+          <% else %>
+            <%= image_tag "placeholder.png", class: "styled-image" %>
+          <% end %>
+
           <p> <% susu.user.first_name %> Invited You to this susu</p>
         </div>
         <%= button_to "Join", accept_invite_path(susu), class: "btn btn-light" %>
@@ -46,7 +51,13 @@
         </div>
         <div id="invite_detail">
           <div class="avatar_i">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
+            <% else %>
+              <%= image_tag "placeholder.png", class: "styled-image" %>
+            <% end %>
+            
             <p> And you are part of this susu</p>
           </div>
            <%= link_to "Open", susu_path(susu), class: "btn btn-light" %>
