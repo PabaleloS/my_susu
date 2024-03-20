@@ -4,9 +4,11 @@
 
         <div id="header_div">
           <p><b>Hey <%= @user.first_name %></b></p>
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class:"avata" %>
-
-          <%#= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
+          <% else %>
+            <%= image_tag "placeholder.png", class: "styled-image" %>
+          <% end %>
         </div>
 
         <br>
