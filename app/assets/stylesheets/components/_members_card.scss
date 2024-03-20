@@ -3,6 +3,9 @@
   overflow-y: auto;
   height: calc(100vh - 100px);
 }
+.search-bar {
+  border: 1px solid #000;
+}
 
 .user_list_card{
   // margin: 30px;
@@ -150,7 +153,7 @@
 
 .hide-checkbox:checked + label {
   background-color: #FF8A00;
-  border: 2px solid #fff;
+  border: 1px solid #fff;
   color: #fff;
 }
 
@@ -159,11 +162,17 @@
   bottom: 65px;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 5px;
-  z-index: 1010;
-  padding: 35px;
+  z-index: 1005;
+  padding: 30px;
 }
 
 #next_button input[type="submit"] {
   width: 95%;
+  background-color: #FF8A00;
+  border: none;
+  padding: 16px;
+  border-radius: 15px;
+  font-size: 20px;
+
+
 }

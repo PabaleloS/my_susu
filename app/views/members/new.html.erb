@@ -18,7 +18,7 @@
     <div data-controller="search-users " id="search_users">
       <%= form_with url: susu_users_path(@susu), method: :get, html: {class: "mb-2", data: {search_users_target: "form"}} do |f| %>
         <%= f.text_field :query,
-                          class: "form-control",
+                          class: "form-control search-bar",
                           placeholder: "Search for a user...",
                           value: params[:query],
                           data: {

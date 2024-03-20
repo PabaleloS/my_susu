@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function() {
   const reloadLink = document.getElementById("reload-link");
 
@@ -16,10 +17,4 @@ document.addEventListener("DOMContentLoaded", function() {
   } else {
     console.error("Element with ID 'reload-link' not found!");
   }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('icon').addEventListener('click', function() {
-    document.getElementById('messageForm').submit();
-  });
 });

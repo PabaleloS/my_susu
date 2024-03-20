@@ -1,13 +1,17 @@
 <br>
   <div class="container">
     <div id="page_main">
-      <div class="members_container">
-
-      <a href="#" onclick="history.back(); return false;"><img src="https://img.icons8.com/fluency-systems-filled/48/long-arrow-left.png"/></a>
-      <br>
-      <br><div id="menu_icon">
+      <div class="members_container"><div id="new_susu_header">
+      <%= link_to :back do %>
+        <div id="back_arrow">
+          <img width="48" height="48" src="https://img.icons8.com/fluency-systems-filled/48/long-arrow-left.png" alt="long-arrow-left"/>
+        </div>
+      <% end %>
+      <div id="menu_icon">
         <img width="24" height="24" src="https://img.icons8.com/android/24/menu.png" alt="menu"/>
       </div>
+    </div>
+    <br>
       <div id="header_div">
         <h3>Track Contributions of <%= @susu.name %></h3>
       </div>
