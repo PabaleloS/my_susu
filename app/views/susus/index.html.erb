@@ -6,9 +6,9 @@
         <% t = Time.now %>
         <% if t.hour < 12 %>
           <h4>Good morning <%= @user.first_name %></h4>
-        <% elsif t.hour > 12 && t.hour < 18  %>
+        <% elsif t.hour >= 12 && t.hour <= 18  %>
           <h4>Good afternoon <%= @user.first_name %></h4>
-        <% else t.hour > 12 && t.hour < 18  %>
+        <% else t.hour > 18 %>
           <h4>Good evening <%= @user.first_name %></h4>
         <% end %>
       </div>
