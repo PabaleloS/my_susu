@@ -11,3 +11,4 @@ Rails.application.config.assets.version = "1.0"
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w(bootstrap.min.js popper.js)
+# Rails.application.config.assets.precompile += %w( mixkit-long-pop-2358.mp3 )

@@ -21,7 +21,7 @@
       <div id="invite_detail">
         <div class="avatar_i">
           <% if @user.photo.attached? %>
-            <%= cl_image_tag user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
+            <%= cl_image_tag @user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
           <% else %>
             <%= image_tag "placeholder.png", class: "styled-image" %>
           <% end %>

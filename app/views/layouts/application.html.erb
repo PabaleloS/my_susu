@@ -11,28 +11,22 @@
     <%= javascript_include_tag 'page_reload' %>
     <%= javascript_include_tag 'deposit' %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-
+    <%= favicon_link_tag "favicon.ico" %>
   </head>
-
   <body class="<%= controller_name %> <%= action_name %>">
-
     <div class="d-flex flex-column min-vh-100">
-
       <article class="flex-grow-1">
-       <%= render "shared/flashes" %>
+        <%= render "shared/flashes" %>
         <%= yield %>
       </article>
       <br>
       <br>
-
-
       <% if @susu.present? && !(controller_name == 'messages' && action_name == 'index') %>
         <%= render "shared/navbar", class: "row" %>
       <% end %>
-
       <%# if @susu.present? %>
-        <%#= render "shared/navbar", class: "row" %>
-     <%# end %>
+      <%#= render "shared/navbar", class: "row" %>
+      <%# end %>
     </div>
     <!--to make the alert disappear after some time-->
 

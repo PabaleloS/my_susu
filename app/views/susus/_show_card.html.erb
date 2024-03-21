@@ -1,5 +1,4 @@
   <br>
-
   <div id="show_payment_div">
 
       <div id="user_show_header">
@@ -37,40 +36,26 @@
 -->
         </div>
 
-
+  </div>
+</div>
+<div id="susu_banner_div">
+  <div id="big_card">
+    <div id="inner_title_div">
+      <h3> <%= @susu.name %>  </h3>
+      <div id="button_div1">
+        <img width="20" height="20" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710397112/zqy55trixnjyf3lbuyts.png" alt="guest-male--v1"/>
+        <p> <%= link_to "Invite", new_susu_member_path(@susu), class: "no-underline" %> </p>
       </div>
-
-
-
-      <div id="susu_banner_div">
-
-          <div id="big_card">
-
-            <div id="inner_title_div">
-
-                <h3> <%= @susu.name %>  </h3>
-
-                <div id="button_div1">
-
-                  <img width="20" height="20" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710397112/zqy55trixnjyf3lbuyts.png" alt="guest-male--v1"/>
-                  <p> <%= link_to "Invite", new_susu_member_path(@susu), class: "no-underline" %> </p>
-
-                </div>
-
-            </div>
-
-            <div id="inner_avatars_div" >
-
-              <p>Your Group </p>
-                <% @susu.users.each do |user| %>
-                  <% if user.photo.attached? %>
-                    <%= cl_image_tag user.photo.key, class: "styled-image" %>
-                  <% else %>
-                    <%= image_tag "placeholder.png", class: "styled-image" %>
-                  <% end %>
-                <% end %>
-            </div>
-
-          </div>
-
-      </div>
+    </div>
+    <div id="inner_avatars_div" >
+      <p>Your Group </p>
+      <% @susu.users.each do |user| %>
+        <% if user.photo.attached? %>
+          <%= cl_image_tag user.photo.key, class: "styled-image" %>
+        <% else %>
+          <%= image_tag "placeholder.png", class: "styled-image" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
