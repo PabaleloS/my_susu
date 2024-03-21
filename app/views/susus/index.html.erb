@@ -24,25 +24,9 @@
 
               <div id="secret_balance">
 
-                <% invitation_found = false %>
-                <% if @accepted_susus.any? %>
-                  <% @accepted_susus.each do |susu| %>
-                      <% invitation_found = true %>
-                      <% break %> <!-- Exiting loop once a pending invitation is found -->
-                  <% end %>
-                  <% if invitation_found %>
-
                   <div id="Actual_balance">
                     <h6><b><p> <span> ZAR<%= current_user.balance %></span></p></b></h6>
                   </div>
-                  <% else %>
-                    <!-- <div id="fake_balance">
-                      <h6><b><p> <span>Rxxxxx</span></p></b></h6>
-                      </div>-->
-                    <% end %>
-                  <% else %>
-                    <!--<p>Your Susu List</p>-->
-                  <% end %>
 
                   <div id="fake_balance">
                   <h6><b><p> <span>ZARxxxxx</span></p></b></h6>
