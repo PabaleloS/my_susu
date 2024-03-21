@@ -12,26 +12,30 @@
             <div id="secret_balance">
 
             <div id="Actual_balance">
-              <h6><b><p> <span> R<%= @susu.balance %></span></p></b></h6>
+              <h6><b><p> <span> ZAR<%= @susu.balance %></span></p></b></h6>
             </div>
 
             <div id="fake_balance">
-            <h6><b><p> <span>Rxxxxx</span></p></b></h6>
+            <h6><b><p> <span>ZARxxxxx</span></p></b></h6>
             </div>
+          </div>
+
         </div>
 
+        <div id="payment-tab">
         <div id="top_btn">
-          <p><%= button_to "disburse", disburse_path(@susu), id:"button1", class: "btn btn-link no-underline" %></p>
+          <p><%= button_to "disburse", disburse_path(@susu), id:"button199", class: "btn btn-link no-underline" %></p>
         </div>
 
         <div id="top_btn">
         <p><%= link_to "Topup", "#{new_susu_deposit_path(@susu)}?timestamp=#{Time.current.to_i}", class: "no-underline", id: "reload-link" %></p>
 
+        </div>
       <!--  <p><%#= link_to "Topup", new_susu_deposit_path(@susu, timestamp: Time.current.to_i), class: "no-underline", id: "reload-link" %></p>
 -->
-</div>
-
         </div>
+
+
       </div>
 
 

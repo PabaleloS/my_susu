@@ -3,11 +3,11 @@
     <div id="message-<%= message.id %>">
       <div id="chatlive">
       <div id="message_img">
+
         <img width="15" height="15" class="avatar-messages" src="https://kitt.lewagon.com/placeholder/users/ssaunier"/>
       </div>
 
       <div id="message_info">
-
 
         <div id="message_contenty">
           <h6 style="font-size: 9px;"><%= message.member.user.first_name %></h6>
@@ -17,9 +17,9 @@
         <div id="msg-time">
           <small>
             <i><%= message.created_at.strftime("%l:%M %p") %></i>
-           <!-- <i><%#= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>-->
           </small>
         </div>
+        
       </div>
     </div>
     </div>
