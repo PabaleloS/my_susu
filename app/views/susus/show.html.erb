@@ -18,12 +18,12 @@
       </div>
       <img width="20" height="20" src="https://img.icons8.com/ios/50/appointment-reminders--v1.png" alt="alert"/>
     </div>
-    
+
     <%#= button_to "disburse", disburse_path(@susu) %>
     <%= render partial: 'susus/show_card', susu: @susu %>
     <br>
 
-    <% if @all_members.any? %>
+    <% if @all_members&.any? %>
       <div id="next_withdraw_big_card">
         <p> Next Withdraw </p>
         <% @accepted_members.each do |member|  %>

@@ -95,6 +95,7 @@ class SususController < ApplicationController
     @susu = Susu.new(susu_params)
     @susu.user = current_user
     if @susu.save
+      Member.create(susu: @susu, user: current_user, join_date: Date.today, status: "accepted")
       redirect_to new_susu_member_path(@susu), notice: 'Susu was successfully created.'
     else
       render :new, status: :unprocessable_entity
