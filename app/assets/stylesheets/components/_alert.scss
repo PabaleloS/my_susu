@@ -1,6 +1,30 @@
 .alert {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
-  z-index: 1000;
+  z-index: 2000;
+  background-color: orange;
+  top: 60px;
+  right: 30px;
+  border-radius: 8px;
+  opacity: 0;
+  animation: appear-then-fade 4s ease-in-out;
+  // bottom: 16px;
+  // right: 16px;
+  // transform: translateX(-50%);
+
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // gap: var(--space-s);
+
+  // max-width: 100%;
+  // width: max-content;
+  // padding: 0 var(--space-m);
+
+  // &__messag {
+  //   font-size: var(--font-size-s);
+  //   color: var(--color-white);
+  //   padding: var(--space-xs) var(--space-m);
+  //   background-color: var(--color-dark);
+  //   border-radius: 999px;
+  // }
 }

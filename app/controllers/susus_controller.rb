@@ -78,7 +78,6 @@ end
   # end
 
   def accept_invite
-
     @user = current_user
     @susu = Susu.find(params[:id])
     @member = @susu.members.find_by(user_id: @user.id)

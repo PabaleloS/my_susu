@@ -54,6 +54,7 @@ gem "sassc-rails"
 gem 'faker', '~> 2.18', require: false
 gem "dotenv-rails"
 gem "cloudinary"
+gem "htmlbeautifier"
 
 
 
