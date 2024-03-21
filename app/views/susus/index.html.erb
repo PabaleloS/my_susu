@@ -1,8 +1,8 @@
 <div class="container">
   <br>
   <div id="page_main">
-    <div id="header_div">
-      <div>
+        <div id="header_div">
+        <div>
         <% t = Time.now %>
         <% if t.hour < 12 %>
           <h4>Good morning <%= @user.first_name %></h4>
@@ -12,44 +12,36 @@
           <h4>Good evening <%= @user.first_name %></h4>
         <% end %>
       </div>
-      <% if current_user.photo.attached? %>
-        <%= cl_image_tag current_user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
-      <% else %>
-        <%= image_tag "placeholder.png", class: "styled-image" %>
-      <% end %>
-    </div>
-    <br>
-    <div id="show_payment_div">
-      <div id="user_show_header">
-        <p>Account balance</p>
-        <img width="20" id="hideIcon" height="20" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710348399/xsrryz8iuwjcbzsdqqlo.png">
-      </div>
-      <div id="payment_btns_div">
-        <div id="secret_balance">
-          <% invitation_found = false %>
-          <% if @accepted_susus.any? %>
-            <% @accepted_susus.each do |susu| %>
-              <% invitation_found = true %>
-              <% break %> <!-- Exiting loop once a pending invitation is found -->
-            <% end %>
-            <% if invitation_found %>
-              <div id="Actual_balance">
-                <h6><b>
-                    <p> <span> ZAR<%= current_user.balance %></span></p>
-                  </b></h6>
-              </div>
-            <% else %>
-              <!-- <div id="fake_balance">
-                      <h6><b><p> <span>Rxxxxx</span></p></b></h6>
-                      </div>-->
-            <% end %>
+         
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
           <% else %>
-            <!--<p>Your Susu List</p>-->
+            <%= image_tag "placeholder.png", class: "styled-image" %>
           <% end %>
-          <div id="fake_balance">
-            <h6><b>
-                <p> <span>ZARxxxxx</span></p>
-              </b></h6>
+        </div>
+
+        <br>
+
+        <div id="show_payment_div">
+
+            <div id="user_show_header">
+              <p>Account balance</p>
+              <img width="20" id="hideIcon" height="20" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710348399/xsrryz8iuwjcbzsdqqlo.png">
+            </div>
+
+            <div id="payment_btns_div">
+
+              <div id="secret_balance">
+
+                  <div id="Actual_balance">
+                    <h6><b><p> <span> ZAR<%= current_user.balance %></span></p></b></h6>
+                  </div>
+
+                  <div id="fake_balance">
+                  <h6><b><p> <span>ZARxxxxx</span></p></b></h6>
+                  </div>
+
+              </div>
           </div>
         </div>
       </div>
