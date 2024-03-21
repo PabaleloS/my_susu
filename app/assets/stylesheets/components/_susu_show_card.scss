@@ -8,6 +8,7 @@
   #big_card{
     border-radius: 20px;
     display: flex;
+    flex-grow: 1;
 
     justify-content: center;
     flex-direction: column;
