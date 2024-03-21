@@ -2,7 +2,6 @@
 <div class="container">
   <br>
   <div id="page_main">
-
     <div id="show_header_div">
       <div id="header_user">
         <% if current_user.photo.attached? %>
@@ -10,83 +9,75 @@
         <% else %>
           <%= image_tag "placeholder.png", class: "styled-image" %>
         <% end %>
-
         <div id="header_user_text">
           <h6><%= current_user.first_name %> <%= current_user.last_name %></h6>
           <!--<p> Welcome back! 🌟</p>-->
           <%#= @susu.balance %>
         </div>
       </div>
-
       <img width="20" height="20" src="https://img.icons8.com/ios/50/appointment-reminders--v1.png" alt="alert"/>
     </div>
-
     <%#= button_to "disburse", disburse_path(@susu) %>
     <%= render partial: 'susus/show_card', susu: @susu %>
     <br>
-
     <% if @all_members.any? %>
-    <div id="next_withdraw_big_card">
-      <p> Next Withdraw </p>
-      <% @accepted_members.each do |member|  %>
-      <div id="withdraw_list_card">
-        <div id="set_width">
-          <% if member.user.photo.attached? %>
-            <%= cl_image_tag member.user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
-          <% else %>
-            <%= image_tag "placeholder.png", class: "styled-image" %>
-          <% end %>
-          <div id="withdraw_user_text">
-            <h6> <%= member.user.first_name %>  </h6>
-            <p> <%= member.user.updated_at.strftime('%Y-%m-%d') %></p>
-            <p> Balance: <b> ZAR <%= member.balance %> <b> </p>
-            <!-- <p>Has received disbursal in this cycle: <%#= member.has_received_disbursement %></p>-->
+      <div id="next_withdraw_big_card">
+        <p> Next Withdraw </p>
+        <% @accepted_members.each do |member|  %>
+          <div id="withdraw_list_card">
+            <div id="set_width">
+              <% if member.user.photo.attached? %>
+                <%= cl_image_tag member.user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
+              <% else %>
+                <%= image_tag "placeholder.png", class: "styled-image" %>
+              <% end %>
+              <div id="withdraw_user_text">
+                <h6> <%= member.user.first_name %>  </h6>
+                <p> <%= member.user.updated_at.strftime('%Y-%m-%d') %></p>
+                <p> Balance: <b> ZAR <%= member.balance %> <b> </p>
+                <!-- <p>Has received disbursal in this cycle: <%#= member.has_received_disbursement %></p>-->
+              </div>
+            </div>
+            <!--arrow needs to be returned or reworked-->
           </div>
-        </div>
-
-<!--arrow needs to be returned or reworked-->
-
-      </div>
-      <% end %>
-    </div>
-    <% elsif @pending_members.present? %>
-
-    <% @pending_members.each do |member| %>
-    <div id="next_withdraw_big_card">
-      <p> Pending Members </p>
-      <div id="withdraw_list_card">
-        <div id="set_width">
-          <% if member.user.photo.attached? %>
-            <%= cl_image_tag member.user.photo.key, crop: :fill, class: "styled-image" %>
-          <% else %>
-            <%= image_tag "placeholder.png", class: "styled-image" %>
-          <% end %>
-          <div id="withdraw_user_text">
-            <h6> <%= member.user.first_name %>  </h6>
-            <p> <%= member.user.updated_at.strftime('%Y-%m-%d') %></p>
-          </div>
-        </div>
-          <% if member.user.photo.attached? %>
-            <%= cl_image_tag member.user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
-          <% else %>
-            <%= image_tag "placeholder.png", class: "styled-image" %>
-          <% end %>
-      </div>
-        <% if member.user.photo.attached? %>
-          <%= cl_image_tag member.user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
-        <% else %>
-          <%= image_tag "placeholder.png", class: "styled-image" %>
         <% end %>
+      </div>
+    <% elsif @pending_members.present? %>
+      <div id="next_withdraw_big_card">
+        <% @pending_members.each do |member| %>
+          <p> Pending Members </p>
+          <div id="withdraw_list_card">
+            <div id="set_width">
+              <% if member.user.photo.attached? %>
+                <%= cl_image_tag member.user.photo.key, crop: :fill, class: "styled-image" %>
+              <% else %>
+                <%= image_tag "placeholder.png", class: "styled-image" %>
+              <% end %>
+              <div id="withdraw_user_text">
+                <h6> <%= member.user.first_name %>  </h6>
+                <p> <%= member.user.updated_at.strftime('%Y-%m-%d') %></p>
+                  <p> Balance: <b> ZAR <%= member.balance %> <b> </p>
+                </div>
+              </div>
+              <% if member.user.photo.attached? %>
+                <%= cl_image_tag member.user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
+              <% else %>
+                <%= image_tag "placeholder.png", class: "styled-image" %>
+              <% end %>
+            </div>
+            <% if member.user.photo.attached? %>
+              <%= cl_image_tag member.user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
+            <% else %>
+              <%= image_tag "placeholder.png", class: "styled-image" %>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>This susu has no members</p>
+      <% end %>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
     </div>
-    <% end %>
-    <% else %>
-    <p>This susu has no members</p>
-    <% end %>
-    <br>
-     <br>
-      <br>
-       <br>
-
-
-  </div>
-</div>
