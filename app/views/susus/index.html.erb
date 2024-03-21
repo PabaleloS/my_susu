@@ -12,7 +12,7 @@
           <h4>Good evening <%= @user.first_name %></h4>
         <% end %>
       </div>
-         
+
           <% if current_user.photo.attached? %>
             <%= cl_image_tag current_user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
           <% else %>
@@ -44,8 +44,6 @@
               </div>
           </div>
         </div>
-      </div>
-    </div>
     <div id="create_susu_box">
       <div class="user_show_header">
         <p>Great to have you here,<br/>
@@ -60,5 +58,5 @@
       </div>
     </div>
     <%= render partial: 'susus/index_card' %>
-  </div>
-</div>
+      </div>
+    </div>
