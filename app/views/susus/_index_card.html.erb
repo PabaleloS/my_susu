@@ -3,11 +3,10 @@
 <% invitation_found = false %>
 <% if @pending_susus.any? || @accepted_susus.any? %> <!-- Check for both pending and accepted invitations -->
   <% invitation_found = true %>
-  <p>Your susu List</p>
+  <p>Your susu list</p>
 <% else %>
   <p>No susu invitations</p>
 <% end %>
-
 <!---->
 <% if @pending_susus.any? %>
   <% @pending_susus.each do |susu| %>
@@ -15,7 +14,7 @@
       <div id="invite_group_banner">
         <div id="susu_title">
           <h6><%= link_to susu.name, susu_path(susu) %></h6>
-          <p><%= susu.members.count %> members join today</p>
+          <p><%= susu.members.count %> members joined today</p>
         </div>
         <%= button_to "decline", decline_invite_path(susu), class: "btn btn-light" %>
       </div>
@@ -26,7 +25,6 @@
           <% else %>
             <%= image_tag "placeholder.png", class: "styled-image" %>
           <% end %>
-
           <p> <% susu.user.first_name %> Invited You to this susu</p>
         </div>
         <%= button_to "Join", accept_invite_path(susu), class: "btn btn-light" %>
@@ -35,35 +33,31 @@
     <!-- No susu invitations -->
   <% end %>
 <% else %>
- <!-- <h2> No susu invitiations </h2>-->
+  <!-- <h2> No susu invitiations </h2>-->
   <!-- <p>No susus available.</p> -->
 <% end %>
-
-
 <% if @accepted_susus.any? %>
   <% @accepted_susus.each do |susu| %>
-      <div class="invite-card">
-        <div id="invite_group_banner">
-          <div id="susu_title">
-            <h6><%= link_to susu.name, susu_path(susu) %></h6>
-            <p><%= susu.members.count %> members join today</p>
-          </div>
-        </div>
-        <div id="invite_detail">
-          <div class="avatar_i">
-
-            <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
-            <% else %>
-              <%= image_tag "placeholder.png", class: "styled-image" %>
-            <% end %>
-            
-            <p> And you are part of this susu</p>
-          </div>
-           <%= link_to "Open", susu_path(susu), class: "btn btn-light" %>
-          <%#= button_to "enter", susu_path(susu), class: "btn btn-light" %>
+    <div class="invite-card">
+      <div id="invite_group_banner">
+        <div id="susu_title">
+          <h6><%= link_to susu.name, susu_path(susu) %></h6>
+          <p><%= susu.members.count %> members join today</p>
         </div>
       </div>
+      <div id="invite_detail">
+        <div class="avatar_i">
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
+          <% else %>
+            <%= image_tag "placeholder.png", class: "styled-image" %>
+          <% end %>
+          <p> And you are part of this susu</p>
+        </div>
+        <%= link_to "Open", susu_path(susu), class: "btn btn-light" %>
+        <%#= button_to "enter", susu_path(susu), class: "btn btn-light" %>
+      </div>
+    </div>
   <% end %>
 <% else %>
   <!-- <p>No susus available.</p> -->

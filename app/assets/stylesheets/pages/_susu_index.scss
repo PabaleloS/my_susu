@@ -33,19 +33,24 @@ flex-direction: column;
   justify-content: space-between;
 
 
-  p{
+  h4{
     margin-top: 10px;
     font-family: "Inter-SemiBold", Helvetica;
     font-weight: 150;
     color: #000000;
-    font-size: 15px;
+    // font-size: 15px;
     letter-spacing: 0;
+    padding-top: 7px;
+  }
+
+  #fake-balance{
+    font-size: 60px;
   }
 }
 
 
 #create_susu_box {
-padding: 20px  10px  10px  10px;
+padding: 20px  ;
 width: 100%;
 height: fit-content;
 background-color: WHITE;

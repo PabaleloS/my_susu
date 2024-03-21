@@ -42,7 +42,6 @@ end
     member.balance += susu.balance
     member.save
     susu.balance = 0
-
     if susu.save && member.save
       redirect_to susu_path(susu), notice: "#{susu.agree_amount} disbursed to #{member.user.first_name}"
     else
@@ -51,7 +50,6 @@ end
   end
 
   def accept_invite
-
     @user = current_user
     @susu = Susu.find(params[:id])
     @member = @susu.members.find_by(user_id: @user.id)

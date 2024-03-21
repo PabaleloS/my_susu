@@ -1,74 +1,73 @@
 <div class="container">
   <br>
   <div id="page_main">
-
-        <div id="header_div">
-          <p><b>Hey <%= @user.first_name %></b></p>
-          <% if current_user.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
-          <% else %>
-            <%= image_tag "placeholder.png", class: "styled-image" %>
-          <% end %>
-        </div>
-
-        <br>
-
-        <div id="show_payment_div">
-
-            <div id="user_show_header">
-              <p>Account balance</p>
-              <img width="20" id="hideIcon" height="20" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710348399/xsrryz8iuwjcbzsdqqlo.png">
-            </div>
-
-            <div id="payment_btns_div">
-
-              <div id="secret_balance">
-
-                <% invitation_found = false %>
-                <% if @accepted_susus.any? %>
-                  <% @accepted_susus.each do |susu| %>
-                      <% invitation_found = true %>
-                      <% break %> <!-- Exiting loop once a pending invitation is found -->
-                  <% end %>
-                  <% if invitation_found %>
-
-                  <div id="Actual_balance">
-                    <h6><b><p> <span> ZAR<%= current_user.balance %></span></p></b></h6>
-                  </div>
-                  <% else %>
-                    <!-- <div id="fake_balance">
+    <div id="header_div">
+      <div>
+        <% t = Time.now %>
+        <% if t.hour < 12 %>
+          <h4>Good morning <%= @user.first_name %></h4>
+        <% elsif t.hour > 12 && t.hour < 18  %>
+          <h4>Good afternoon <%= @user.first_name %></h4>
+        <% else t.hour > 12 && t.hour < 18  %>
+          <h4>Good evening <%= @user.first_name %></h4>
+        <% end %>
+      </div>
+      <!--<p><b>Hey <%#= @user.first_name %></b></p>-->
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
+      <% else %>
+        <%= image_tag "placeholder.png", class: "styled-image" %>
+      <% end %>
+    </div>
+    <br>
+    <div id="show_payment_div">
+      <div id="user_show_header">
+        <p>Account balance</p>
+        <img width="20" id="hideIcon" height="20" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710348399/xsrryz8iuwjcbzsdqqlo.png">
+      </div>
+      <div id="payment_btns_div">
+        <div id="secret_balance">
+          <% invitation_found = false %>
+          <% if @accepted_susus.any? %>
+            <% @accepted_susus.each do |susu| %>
+              <% invitation_found = true %>
+              <% break %> <!-- Exiting loop once a pending invitation is found -->
+            <% end %>
+            <% if invitation_found %>
+              <div id="Actual_balance">
+                <h6><b>
+                    <p> <span> ZAR<%= current_user.balance %></span></p>
+                  </b></h6>
+              </div>
+            <% else %>
+              <!-- <div id="fake_balance">
                       <h6><b><p> <span>Rxxxxx</span></p></b></h6>
                       </div>-->
-                    <% end %>
-                  <% else %>
-                    <!--<p>Your Susu List</p>-->
-                  <% end %>
-
-                  <div id="fake_balance">
-                  <h6><b><p> <span>Rxxxxx</span></p></b></h6>
-                  </div>
-
-              </div>
+            <% end %>
+          <% else %>
+            <!--<p>Your Susu List</p>-->
+          <% end %>
+          <div id="fake-balance">
+            <h6><b>
+                <p> <span>Rxxxxx</span></p>
+              </b></h6>
           </div>
-
         </div>
-
-      <div id="create_susu_box">
-          <div class="user_show_header">
-            <p>Great to have you here,<br/>Get started with <strong>mySusu</strong> </p>
-          </div>
-
-          <div id="create_sus_subs">
-
-          <h6>Create your Susu Group</h6>
-            <div id="button_div1">
-              <img width="20" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABiklEQVR4nO2ZTU7DQAxGB0TFz4oLALcBirgCpYKCUMW2qOeiwCVAHIFAw559RPuQwRXdROpkks4I/HZZxPN9sceRbOcMwwgG2AQugAfgHShojkLPuAd6wEZdJo6BMfF4A9qhJq6BCfH5BPohmUjBxLwZv8xIXWpKUyOX++pj5JJ06fkYke6UKnc+RqT9pcrYx0iT/4lQCh8jSeMiGdnWmB91BXRmJAzLSBlWWoFYacUore+vXhXf1uzMSBh2R8qw9huIlVYZVlqB/JnSqh1nRhLDWUYSw/3njExJh2mIkfNEJvIT1eJtZDZpXAMOgZd4HpCzD4BWlUmjjO+FHX3eAjoyQAayJazeMmAEnMzWCMBeldmv7O+EjksEoKuaRj4vyRJSeARWGlW4mJ5V4Fk1nVXdWA0aVbmYnqFqkZJb9335SPd20jFuYmSGn0wMVYNo2a8aqK8BhCfgFNiVDlK76t8zW3qxu3PlJBquQgO3gVfikVXORMmd6WlLzJfQfnPgVn+CfnfCMFytfAExGuFedzwxZwAAAABJRU5ErkJggg==">
-              <p> <%= link_to "Susu", "../susus/new", class: "no-underline" %> </p>
-            </div>
-        </div>
+      </div>
     </div>
-
+    <div id="create_susu_box">
+      <div class="user_show_header">
+        <p>Great to have you here,<br/>
+          Get started with <strong>mySusu</strong> </p>
+      </div>
+      <div id="create_sus_subs">
+        <h6>Create your Susu Group</h6>
+        <div id="button_div1">
+          <img width="20" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABiklEQVR4nO2ZTU7DQAxGB0TFz4oLALcBirgCpYKCUMW2qOeiwCVAHIFAw559RPuQwRXdROpkks4I/HZZxPN9sceRbOcMwwgG2AQugAfgHShojkLPuAd6wEZdJo6BMfF4A9qhJq6BCfH5BPohmUjBxLwZv8xIXWpKUyOX++pj5JJ06fkYke6UKnc+RqT9pcrYx0iT/4lQCh8jSeMiGdnWmB91BXRmJAzLSBlWWoFYacUore+vXhXf1uzMSBh2R8qw9huIlVYZVlqB/JnSqh1nRhLDWUYSw/3njExJh2mIkfNEJvIT1eJtZDZpXAMOgZd4HpCzD4BWlUmjjO+FHX3eAjoyQAayJazeMmAEnMzWCMBeldmv7O+EjksEoKuaRj4vyRJSeARWGlW4mJ5V4Fk1nVXdWA0aVbmYnqFqkZJb9335SPd20jFuYmSGn0wMVYNo2a8aqK8BhCfgFNiVDlK76t8zW3qxu3PlJBquQgO3gVfikVXORMmd6WlLzJfQfnPgVn+CfnfCMFytfAExGuFedzwxZwAAAABJRU5ErkJggg==">
+          <p> <%= link_to "Susu", "../susus/new", class: "no-underline" %> </p>
+        </div>
+      </div>
+    </div>
     <%= render partial: 'susus/index_card' %>
-
-    </div>
   </div>
+</div>
