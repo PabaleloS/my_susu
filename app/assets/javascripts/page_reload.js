@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
+
 const slider = document.getElementById("myRange");
 const output = document.getElementById("sliderValue");
 const fill = document.querySelector('.slider-fill');
@@ -40,3 +41,4 @@ document.getElementById("back_arrow").addEventListener("click", function(event) 
     event.preventDefault();
     window.location.href = "../";
 });
+
