@@ -66,12 +66,11 @@ end
 
   def create
     @susu = Susu.new(susu_params)
-    @susu.user_id = current_user.id
-raise
+    @susu.user = current_user
     if @susu.save
       redirect_to new_susu_member_path(@susu), notice: 'Susu was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

@@ -5,6 +5,7 @@ export default class extends Controller {
   static targets = [ "form", "input", "users_list" ];
 
   connect() {
+    console.log('seach usersr')
   }
 
   update() {
