@@ -2,6 +2,7 @@
 <div class="container">
   <br>
   <div id="page_main">
+
     <div id="show_header_div">
       <div id="header_user">
         <% if current_user.photo.attached? %>
@@ -17,9 +18,11 @@
       </div>
       <img width="20" height="20" src="https://img.icons8.com/ios/50/appointment-reminders--v1.png" alt="alert"/>
     </div>
+    
     <%#= button_to "disburse", disburse_path(@susu) %>
     <%= render partial: 'susus/show_card', susu: @susu %>
     <br>
+
     <% if @all_members.any? %>
       <div id="next_withdraw_big_card">
         <p> Next Withdraw </p>
@@ -42,6 +45,8 @@
           </div>
         <% end %>
       </div>
+
+
     <% elsif @pending_members.present? %>
       <div id="next_withdraw_big_card">
         <% @pending_members.each do |member| %>
@@ -71,6 +76,8 @@
               <%= image_tag "placeholder.png", class: "styled-image" %>
             <% end %>
           </div>
+
+
         <% end %>
       <% else %>
         <p>This susu has no members</p>

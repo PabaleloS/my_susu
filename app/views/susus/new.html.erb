@@ -3,12 +3,15 @@
         <div class="container new-susu-container">
             <div id="first">
                 <div id="new_susu_header">
-                    <div id="back_arrow">
-                        <img width="35" height="35" src="https://img.icons8.com/fluency-systems-filled/48/long-arrow-left.png" alt="long-arrow-left"/>
-                    </div>
+
+                 <a href="#" onclick="history.back(); return false;">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAZ0lEQVR4nO2WMQqAQAwE5xMR/f9LrETRxit8jsdJbKwsNIK306UaWJYlIMR9GmABeoKlCdiBMUpqwOrSDWglfRLF+ypWTXsLs0uTjwW/F9sl6k7yCEyxo8J99PpMkeJTXhZuOC5RPRnBEDtxjsnsowAAAABJRU5ErkJggg==">
+                </a>
+
                     <div id="menu_icon">
                         <img width="24" height="24" src="https://img.icons8.com/android/24/menu.png" alt="menu"/>
                     </div>
+
                 </div>
 
                 <br>
@@ -44,9 +47,11 @@
               <br>
               <br>
             <div id="next_button1">
-                <%= form.submit "Create SuSu", class: "btn btn-secondary btn-lg btn-block btn-orange", style: "font-weight: bold; color: white;  height: 53px; flex-shrink: 0; margin: auto;" %>
+                <%= form.submit "Create SuSu", class: "btn btn-secondary btn-lg btn-block btn-orange", style: "font-weight: bold; color: white;  height: 43px; flex-shrink: 0; margin: auto;" %>
                 <% end %>
 
+                <br>
+                <br>
                 <br>
 <!--                <script>
                     document.getElementById("back_arrow").addEventListener("click", function(event) {
