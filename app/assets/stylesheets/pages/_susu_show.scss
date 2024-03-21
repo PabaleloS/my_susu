@@ -16,6 +16,8 @@
 
     h6{
       text-align: left;
+      padding-top: 20px;
+      font-size: 22px;
     }
   }
 
@@ -42,7 +44,7 @@
   display: flex;
   flex-direction: column;
   background-color: white;
-  border-radius: 10px  10px  10px  0px;
+  border-radius: 10px;
   margin-bottom: 30px;
 
 }
@@ -56,12 +58,16 @@
 
 }
 
-
-#payment_btns_div{
+#payment-tab{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  // padding: 20px;
   align-items: center;
+
+}
+
+#payment_btns_div{
 
 
     #secret_balance{
@@ -72,6 +78,7 @@
     h6{
       margin-left: 20px;
       margin-top: 5px;
+      font-size: 30px;
     }
 
     }
@@ -79,9 +86,16 @@
 
 
 #top_btn{
-  width:  50%;
-  height: 100%;
-  background-color: #F0F5F3;
+  border-style: solid;
+  border-color: #F0F5F3;
+  border-radius: 10px  10px  0px  10px;
+
+  // border-radius: 20px;
+  width:  48%;
+  height: 80px;
+  background-color: #E29706;
+  color: #000;
+
   display: flex;
   justify-content: center;
   padding-top: 20px;
@@ -98,14 +112,21 @@
     color: white;
   }
 
-  // #button1{
-  //   margin: 10px;
-  // }
+  p{
+    margin-top: 20px;
+  }
 
 }
 
 #top_btn:hover{
-  background-color: #E29706;
+  // background-color: #F0F5F3;
+  background-color: #10100f;
+  color: white;
+
+  .no-underline {
+    color: #ffffff;
+
+  }
 }
 
 #next_withdraw_big_card{
