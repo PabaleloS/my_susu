@@ -3,8 +3,11 @@
     <div id="message-<%= message.id %>">
       <div id="chatlive">
       <div id="message_img">
-
-        <img width="15" height="15" class="avatar-messages" src="https://kitt.lewagon.com/placeholder/users/ssaunier"/>
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
+        <% else %>
+          <%= image_tag "placeholder.png", class: "styled-image" %>
+        <% end %>      </div>
       </div>
 
       <div id="message_info">
@@ -19,7 +22,7 @@
             <i><%= message.created_at.strftime("%l:%M %p") %></i>
           </small>
         </div>
-        
+
       </div>
     </div>
     </div>
