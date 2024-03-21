@@ -8,9 +8,9 @@
         <% else %>
           <%= image_tag "placeholder.png", class: "styled-image" %>
         <% end %>      </div>
+      </div>
 
       <div id="message_info">
-
 
         <div id="message_contenty">
           <h6 style="font-size: 9px;"><%= message.member.user.first_name %></h6>
@@ -20,9 +20,9 @@
         <div id="msg-time">
           <small>
             <i><%= message.created_at.strftime("%l:%M %p") %></i>
-           <!-- <i><%#= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>-->
           </small>
         </div>
+
       </div>
     </div>
     </div>

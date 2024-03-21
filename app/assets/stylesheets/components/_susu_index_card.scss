@@ -68,6 +68,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: -25px;
 }
 
 .avatar_i p {
@@ -76,10 +77,12 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  padding-top: 15px;
 
   margin-left: 10px;
   font-size: smaller;
   margin-top: -1px;
+  color: bisque;
 }
 
 @media screen and (min-width: 768px) {

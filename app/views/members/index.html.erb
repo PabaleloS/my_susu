@@ -1,12 +1,11 @@
-<br>
+
   <div class="container">
     <div id="page_main">
-      <div class="members_container"><div id="new_susu_header">
-      <%= link_to :back do %>
-        <div id="back_arrow">
-          <img width="48" height="48" src="https://img.icons8.com/fluency-systems-filled/48/long-arrow-left.png" alt="long-arrow-left"/>
-        </div>
-      <% end %>
+      <div class="members_container">
+      <div id="new_susu_header">
+      <a href="#" onclick="history.back(); return false;">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAZ0lEQVR4nO2WMQqAQAwE5xMR/f9LrETRxit8jsdJbKwsNIK306UaWJYlIMR9GmABeoKlCdiBMUpqwOrSDWglfRLF+ypWTXsLs0uTjwW/F9sl6k7yCEyxo8J99PpMkeJTXhZuOC5RPRnBEDtxjsnsowAAAABJRU5ErkJggg==">
+      </a>
       <div id="menu_icon">
         <img width="24" height="24" src="https://img.icons8.com/android/24/menu.png" alt="menu"/>
       </div>
@@ -27,10 +26,12 @@
               <% end %>
               <div id="members_user_text">
               <h5><%= member.user.first_name %></h5>
-              <div>
+              <div class="deposit-info">
                 <% if @last_deposits[member.id] %>
                   <p>Last Deposit Date: <%= @last_deposits[member.id][:date] %></p>
+                  <div class="deposit-amount">
                   <p>Last Deposit Amount: <%= @last_deposits[member.id][:agree_amount] %></p>
+                  </div>
                 <% else %>
                   <p>No deposits yet.</p>
                 <% end %>

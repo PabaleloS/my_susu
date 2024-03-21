@@ -1,87 +1,74 @@
-<div class="container">
-  <br>
-  <div id="page_main">
-<br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div id="page_main1">
+            <div class="container new-susu-container">
+                <div id="first">
+                    <div id="new_susu_header">
+                        <div id="back_arrow">
+                            <img width="35" height="35" src="https://img.icons8.com/fluency-systems-filled/48/long-arrow-left.png" alt="long-arrow-left"/>
+                        </div>
+                        <div id="menu_icon">
+                            <img width="24" height="24" src="https://img.icons8.com/android/24/menu.png" alt="menu"/>
+                        </div>
+                    </div>
 
-<br>
+                    <br>
+                    <h2>Create</h2>
+                    <h2><strong>a new SuSu</strong></h2>
+                    <br>
 
-  <div id="page_main1">
-  <!--<div class="container new-susu-container">-->
-    <div id="first">
-      <div id="new_susu_header">
+                    <%= render 'susu_form' %>
+                    <%= form_with(model: Susu.new, local: false, data: { turbo: true }) do |form| %>
 
-        <div id="back_arrow">
-        <img width="48" height="48" src="https://img.icons8.com/fluency-systems-filled/48/long-arrow-left.png" alt="long-arrow-left"/>
+                    <div class="mb-3 string optional susu_name">
+                        <%= form.text_field :name, class: "form-control string optional", placeholder: "SuSu name" %>
+                    </div>
+
+                    <div class="form-outline mx-auto" data-mdb-input-init>
+                        <%= form.text_area :description, class: "form-control", id: "textAreaExample", rows: "4", placeholder: "Description",  style: "height: 300px;" %>
+                    </div>
+                    <br>
+                    <br>
+
+                    <h2>Set Monthly Contribution (R)</h2>
+                    <br>
+                    <div class="mb-3 string optional susu_name" style="display: flex; align-items: center;">
+                        <input type="range" min="100" max="6000" value="100" class="slider"; onchange="updateSliderValue(this.value)">
+                        <div class="slider-fill"></div>
+                        <span id="sliderValue">100</span>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+
+                <div id="next_button">
+                    <%= form.submit "Create SuSu", class: "btn btn-secondary btn-lg btn-block btn-orange", style: "font-weight: bold; color: white;  height: 53px; flex-shrink: 0; margin: auto;" %>
+                    <% end %>
+
+                    <br>
+
+                   <!-- javascript should not be added inline -->
+<!--                    <script>
+                        document.getElementById("back_arrow").addEventListener("click", function(event) {
+                            event.preventDefault();
+                            window.location.href = "../";
+                        });
+
+                        function updateSliderValue(value) {
+                            document.getElementById("sliderValue").innerText = value;
+                        }
+                    </script>-->
+                </div>
+            </div>
         </div>
-
-        <div id="menu_icon">
-        <img width="24" height="24" src="https://img.icons8.com/android/24/menu.png" alt="menu"/>
-        </div>
-
-      </div>
-
-      <br>
-      <h2>Create</h2>
-      <h2><strong>a new SuSu</strong></h2>
-      <br>
-
-      <%#= render 'susu_form' %>
-      <%= form_with(model: Susu.new, local: false, data: { turbo: true }) do |form| %>
-
-    <div class="mb-3 string optional susu_name">
-    <%= form.text_field :name, class: "form-control string optional", placeholder: "SuSu name" %>
     </div>
-
-    <div class="form-outline mx-auto" data-mdb-input-init>
-    <%= form.text_area :description, class: "form-control", id: "textAreaExample", rows: "4", placeholder: "Description",  style: "height: 300px;" %>
-    </div>
-    <br>
-
-
-  <br>
-  <br>
-
-  <h2>Set Monthly Contribution (R) </h2>
-  <br>
-  <%= form.radio_button :agree_amount, "500", style: "transform: scale(1.5);" %>
-  <%= form.label :agree_amount, "500", value: '500' %>&nbsp;&nbsp;&nbsp;&nbsp;
-
-  <%= form.radio_button :agree_amount, "1000", style: "transform: scale(1.5);" %>
-  <%= form.label :agree_amount, "1000", value: '1000' %>&nbsp;&nbsp;&nbsp;&nbsp;
-
-  <%= form.radio_button :agree_amount, "1500", style: "transform: scale(1.5);" %>
-  <%= form.label :agree_amount, "1500", value: '1500' %>&nbsp;&nbsp;&nbsp;&nbsp;
-
-  <%= form.radio_button :agree_amount, "2000", style: "transform: scale(1.5);" %>
-  <%= form.label :agree_amount, "2000", value: '2000' %>&nbsp;&nbsp;&nbsp;&nbsp;
-
-  <br>
-
-  <br>
-<!---->
-  <%#= form.submit "Create SuSu", class: "btn btn-orange btn-sm", style: "font-weight: bold; color: white; width: 288px; height: 63px; flex-shrink: 0; margin: auto;" %>
-<!---->
-  <%# end %>
-<!---->
-  </div>
-<!--<br>-->
-  <br>
-
-    <div id="next_button">
-
-      <%= form.submit "Create SuSu", class: "btn btn-secondary btn-lg btn-block btn-orange", style: "font-weight: bold; color: white;  height: 63px; flex-shrink: 0; margin: auto;" %>
-
-      <% end %>
-
-          <script>
-            document.getElementById("back_arrow").addEventListener("click", function(event) {
-            event.preventDefault();
-            window.location.href = "../";
-            });
-      </script>
-  </div>
-
-  </div>
-
-</div>
-</div>
+</body>
+</html>
