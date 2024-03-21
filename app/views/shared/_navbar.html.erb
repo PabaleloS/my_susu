@@ -1,13 +1,13 @@
 
 <div class="fixed-bottom">
   <div class="font-links">
-    <% if @susu %>
+    <% unless @susu.id.nil? %>
       <%= link_to susu_messages_path(@susu), class: "link" do %>
         <i class="fa-regular fa-message fa-lg"></i>
       <% end %>
     <% end %>
 
-    <% if @susu %>
+    <% unless @susu.id.nil? %>
       <% if current_page?(susu_path(@susu)) %>
         <%= link_to root_path, class: "link" do %>
           <i class="fa-solid fa-house-user fa-lg"></i>
@@ -23,7 +23,7 @@
       <% end %>
     <% end %>
 
-    <% if @susu %>
+    <% unless @susu.id.nil? %>
       <%= link_to susu_members_path(@susu), class: "link" do %>
         <i class="fa-solid fa-list fa-lg"></i>
       <% end %>
