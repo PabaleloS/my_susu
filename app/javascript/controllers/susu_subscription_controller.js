@@ -27,7 +27,8 @@ export default class extends Controller {
 
   // Function to play the message sound
   #playMessageSound() {
-    const audio = new Audio('app/assets/mixkit-message-pop-alert-2354.mp3'); 
+    const audio = new Audio('mixkit-long-pop-2358.mp3');
+    audio.preload = 'auto';
     audio.play();
   }
 

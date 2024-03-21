@@ -2,7 +2,6 @@ require_relative "boot"
 
 require "rails/all"
 
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -14,8 +13,12 @@ module MySusu
       generate.helper false
       generate.test_framework :test_unit, fixture: false
     end
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
+
+    # Add the audio file to be precompiled
+    # config.assets.precompile += %w( mixkit-long-pop-2358.mp3 )
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
@@ -29,8 +32,5 @@ module MySusu
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-
-
   end
-
 end

@@ -2,25 +2,25 @@ class SususController < ApplicationController
   before_action :authenticate_user!
 
   def index
-      @user = current_user
-      if params[:id].present?
-        @member = Member.find_by(id: params[:id], user_id: current_user.id)
-        if @member.nil?
-          # Handle the case where the member with the given ID does not belong to the current user
-          flash[:alert] = "Member not found."
-          redirect_to some_path # Redirect to an appropriate page or handle the error as needed
-          return
-        end
-        @members = [@member] # Assign the found member to the @members instance variable
-      else
-        @member = nil
-        @members = @user.members
+    @user = current_user
+    if params[:id].present?
+      @member = Member.find_by(id: params[:id], user_id: current_user.id)
+      if @member.nil?
+        # Handle the case where the member with the given ID does not belong to the current user
+        flash[:alert] = "Member not found."
+        redirect_to some_path # Redirect to an appropriate page or handle the error as needed
+        return
       end
+      @members = [@member] # Assign the found member to the @members instance variable
+    else
+      @member = nil
+      @members = @user.members
+    end
 
-      @pending_susus = Susu.joins(:members).where(members: { user_id: current_user, status: 'pending' })
-      @accepted_susus = Susu.joins(:members).where(members: { user_id: current_user, status: 'accepted' })
-      @declined_susus = Susu.joins(:members).where(members: { user_id: current_user, status: 'declined' })
-end
+    @pending_susus = Susu.joins(:members).where(members: { user_id: current_user, status: 'pending' })
+    @accepted_susus = Susu.joins(:members).where(members: { user_id: current_user, status: 'accepted' })
+    @declined_susus = Susu.joins(:members).where(members: { user_id: current_user, status: 'declined' })
+  end
 
   def show
     @susu = Susu.find(params[:id])
@@ -28,7 +28,8 @@ end
     @message = Message.new
     @all_members = @susu.members
     @accepted_members = @susu.members.where(status: "accepted")
-    @pending_members = @susu.members.where(status: "pending")
+    @pending_members = @susu.members.where(status: "accepted")
+    # @pending_members = @susu.members.where(status: "pending")
   end
 
   def new
