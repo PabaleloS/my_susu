@@ -15,27 +15,15 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log("Reload Button Clicked!");
     });
   }
+
+
+
+  const backArrow = document.getElementById("back_arrow")
+
+  if (backArrow) {
+    backArrow.addEventListener("click", function(event) {
+      event.preventDefault();
+      window.location.href = "../";
+    });
+  }
 });
-
-
-const slider = document.getElementById("myRange");
-const output = document.getElementById("sliderValue");
-const fill = document.querySelector('.slider-fill');
-
-// Update the span value and slider fill when the slider is moved
-// slider.addEventListener("input", function() {
-//     const value = parseInt(this.value);
-//     output.textContent = value;
-//     updateSliderFill();
-// });
-
-// Function to update the slider fill based on the slider value
-function updateSliderFill() {
-    var percent = (slider.value - slider.min) / (slider.max - slider.min) * 100;
-    fill.style.width = percent + '%';
-}
-
-// document.getElementById("back_arrow").addEventListener("click", function(event) {
-//     event.preventDefault();
-//     window.location.href = "../";
-// });

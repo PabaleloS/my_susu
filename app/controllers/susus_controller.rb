@@ -39,19 +39,45 @@ end
   def disburse
     susu = Susu.find(params[:id])
     member = susu.next_member
-    member.balance += susu.balance
-    member.save
-    susu.balance = 0
 
-    if susu.save && member.save
-      redirect_to susu_path(susu), notice: "#{susu.agree_amount} disbursed to #{member.user.first_name}"
-    else
-      render :show, alert: "disbursement unsuccessful, please try again"
+    # Update balances
+    ActiveRecord::Base.transaction do
+      member.update(balance: member.balance + susu.balance)
+      puts "Member balance after update: #{member.balance}" # Debug output
+      member.user.update(balance: member.user.balance + susu.balance)
+      puts "User balance after update: #{member.user.balance}" # Debug output
+
+      # Reset Susu balance
+      susu.update(balance: 0)
+
+      # Redirect with notice
+      redirect_to susu_path(susu), notice: "#{susu.agree_amount} disbursed to #{member.user.first_name}. #{member.user.first_name}'s new balance is #{member.user.balance}."
+    rescue ActiveRecord::RecordInvalid => e
+      # Handle transaction failure
+      flash.now[:alert] = "Disbursement unsuccessful, please try again. Error: #{e.message}"
+      render :show
     end
   end
+  # def disburse
+  #   susu = Susu.find(params[:id])
+  #   member = susu.next_member
+  #   member.balance += susu.balance
+  #   member.user.balance += member.balance
+  #   member.save
+
+  #   member.user.save
+
+  #   susu.balance = 0
+
+  #   if susu.save && member.save && member.user.save
+  #     redirect_to susu_path(susu), notice: "#{susu.agree_amount} disbursed to #{member.user.first_name}"
+  #     flash.now[:alert] = "#{member.user.first_name}'s new balance is #{member.user.balance}"
+  #   else
+  #     render :show, alert: "Disbursement unsuccessful, please try again"
+  #   end
+  # end
 
   def accept_invite
-
     @user = current_user
     @susu = Susu.find(params[:id])
     @member = @susu.members.find_by(user_id: @user.id)

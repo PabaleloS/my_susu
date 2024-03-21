@@ -39,7 +39,7 @@
           <div id="withdraw_user_text">
             <h6> <%= member.user.first_name %>  </h6>
             <p> <%= member.user.updated_at.strftime('%Y-%m-%d') %></p>
-            <p> Balance: <%= member.balance %></p>
+            <p> Balance: <b> ZAR <%= member.balance %> <b> </p>
             <!-- <p>Has received disbursal in this cycle: <%#= member.has_received_disbursement %></p>-->
           </div>
         </div>
@@ -82,5 +82,11 @@
     <% else %>
     <p>This susu has no members</p>
     <% end %>
+    <br>
+     <br>
+      <br>
+       <br>
+
+
   </div>
 </div>
