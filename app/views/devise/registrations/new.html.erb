@@ -1,89 +1,78 @@
 <section class="vh-100" style="background-color: #D9D9D9;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-
- <div class="login_img">
-    <img width="120" height="120" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710994722/mySUSU_tbbiej.gif" alt="Centered Image">
-  </div>
-
+      <div class="login_img">
+        <img width="120" height="120" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710994722/mySUSU_tbbiej.gif" alt="Centered Image">
+      </div>
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card shadow-2-strong" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
-
             <h3 class="mb-5">Create a mySusu Account</h3>
-          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= f.error_notification %>
-
-            <div class="form-inputs">
-              <div class="row">
-                <div class="col-md-6">
-                  <%= f.input :first_name,
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= f.error_notification %>
+              <div class="form-inputs">
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.input :first_name,
                               required: true,
                               label: false,
                               input_html: { class: "form-control", placeholder: "First Name" } %>
-                </div>
-                <div class="col-md-6">
-                  <%= f.input :last_name,
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.input :last_name,
                               required: true,
                               label: false,
                               input_html: { class: "form-control", placeholder: "Last Name" } %>
+                  </div>
                 </div>
-              </div>
-                  <%= f.input :email,
+                <%= f.input :email,
                               required: true,
                               autofocus: true,
                               label: false,
                               input_html: { class: "form-control", placeholder: "Email" } %>
-                  <%= f.input :password,
+                <%= f.input :password,
                               required: true,
                               hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                               label: false,
                               input_html: { class: "form-control", placeholder: "Password", autocomplete: "new-password" } %>
-                  <%= f.input :password_confirmation,
+                <%= f.input :password_confirmation,
                               required: true,
                               label: false,
                               input_html: { class: "form-control", placeholder: "Confirm Password", autocomplete: "new-password" } %>
-                </div>
-
-                <div class="form-actions">
-                  <%= f.button :submit, "Sign up", class: "btn btn-primary btn-lg btn-block" %>
-                  <%#= f.button :submit, "Sign up" %>
-                </div>
-              <% end %>
-
-
-<!---->
-              <%#= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                <%#= f.error_notification %>
-<!--
+              </div>
+              <div class="form-actions">
+                <%= f.button :submit, "Sign up", class: "btn btn-primary btn-lg btn-block" %>
+                <%#= f.button :submit, "Sign up" %>
+              </div>
+            <% end %>
+            <!---->
+            <%#= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%#= f.error_notification %>
+              <!--
                 <div class="form-inputs">
                   <%#= f.input :email,-->
-<!--                              required: true,
+              <!--                              required: true,
                               autofocus: true,
                               input_html: { autocomplete: "email" }%>
                   <%#= f.input :password,-->
-<!--                              required: true,
+              <!--                              required: true,
                               hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                               input_html: { autocomplete: "new-password" } %>
                   <%#= f.input :password_confirmation,-->
-<!--                              required: true,
+              <!--                              required: true,
                               input_html: { autocomplete: "new-password" } %>
                 </div>
 
                 <div class="form-actions">
                  <%#= f.button :submit, "Sign up", class: "btn btn-primary btn-lg btn-block" %>-->
-                  <%#= f.button :submit, "Sign up" %>
-<!--                </div>-->
+              <%#= f.button :submit, "Sign up" %>
+              <!--                </div>-->
               <%# end %>
-
               <hr class="my-4">
-
-            <%= render "devise/shared/links" %>
-
-
+              <%= render "devise/shared/links" %>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
