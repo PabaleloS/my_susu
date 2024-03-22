@@ -9,3 +9,4 @@
 //= link paystack.js
 //= link page_reload.js
 //= link deposit.js
+//= link manifest.json
