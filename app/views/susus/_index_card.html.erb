@@ -3,7 +3,9 @@
 <% invitation_found = false %>
 <% if @pending_susus.any? || @accepted_susus.any? %> <!-- Check for both pending and accepted invitations -->
   <% invitation_found = true %>
-  <p>Your susu list</p>
+  <div class="susu-list">
+  <h3>Your susu list</h3>
+  </div>
 <% else %>
   <p>No susu invitations</p>
 <% end %>
