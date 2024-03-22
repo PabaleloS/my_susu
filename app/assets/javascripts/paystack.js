@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 async function payWithPaystack(e) {
   e.preventDefault();
-  
+
 
   const current_user = document.getElementById('paymentForm').getAttribute('data-current-user');
   let userEmail = "test@gmail.com";
@@ -33,7 +33,7 @@ async function payWithPaystack(e) {
   }
 
   const paymentData = {
-    key: 'pk_test_df92dce9b128be2c60000587dcefce7fba610d39',
+    key: 'pk_test_ff04215132a69e43478e07224af53fc56448028f',
     email: userEmail,
     amount: agreeAmountValue * 100,
     currency: 'ZAR',
