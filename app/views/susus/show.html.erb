@@ -20,59 +20,34 @@
     <%#= button_to "disburse", disburse_path(@susu) %>
     <%= render partial: 'susus/show_card', susu: @susu %>
     <br>
-
     <% if @all_members&.any? %>
-
-<div id="next_withdraw_big_card">
-  <p> Next Withdraw </p>
-  <% @accepted_members.each_with_index do |member, index|  %>
-    <div id="withdraw_list_card">
-      <div id="set_width">
-        <% if member.user.photo.attached? %>
-          <%= cl_image_tag member.user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
-        <% else %>
-          <%= image_tag "placeholder.png", class: "styled-image" %>
-        <% end %>
-        <div id="withdraw_user_text">
-          <h6> <%= member.user.first_name %>  </h6>
-          <p> <%= member.user.updated_at.strftime('%Y-%m-%d') %></p>
-          <p> Balance: <b> ZAR <%= member.balance %> <b> </p>
-        </div>
-      </div>
-      <div id="icon">
-        <% if index == 0 %>
-          <img width="30" height="30" id="Orange" src="https://res.cloudinary.com/dvql3swac/image/upload/v1711067359/xbziqiiypwznqeutkt4w.png" alt="up-squared"/>
-        <% elsif member.balance.zero? %>
-          <img width="30" height="30" id="Gray" src="https://res.cloudinary.com/dvql3swac/image/upload/v1711067467/ipi2g8dhklsebbiqoklj.png" alt="up-squared"/>
-        <% elsif index == @accepted_members.size - 1 %>
-          <img width="30" height="30" id="Red" src="https://res.cloudinary.com/dvql3swac/image/upload/v1711067650/s77nac5kgkdwfxclxxxd.png" alt="up-squared"/>
-        <% else %>
-          <img width="30" height="30" id="Gray" src="https://res.cloudinary.com/dvql3swac/image/upload/v1711067467/ipi2g8dhklsebbiqoklj.png" alt="up-squared"/>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-
-
-    <% elsif @pending_members.present? %>
       <div id="next_withdraw_big_card">
-        <% @pending_members.each do |member| %>
-          <p> Pending Members </p>
+        <p> Next Withdraw </p>
+        <% @accepted_members.each_with_index do |member, index|  %>
           <div id="withdraw_list_card">
             <div id="set_width">
               <% if member.user.photo.attached? %>
-                <%= cl_image_tag member.user.photo.key, crop: :fill, class: "styled-image" %>
+                <%= cl_image_tag member.user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
               <% else %>
                 <%= image_tag "placeholder.png", class: "styled-image" %>
               <% end %>
               <div id="withdraw_user_text">
                 <h6> <%= member.user.first_name %>  </h6>
                 <p> <%= member.user.updated_at.strftime('%Y-%m-%d') %></p>
-                  <p> Balance: <b> ZAR <%= member.balance %> <b> </p>
+                <p> Balance: <b> ZAR <%= member.balance %> <b> </p>
+                  </div>
                 </div>
-                <!--arrow needs to be returned or reworked-->
+                <div id="icon">
+                  <% if index == 0 %>
+                    <img width="30" height="30" id="Orange" src="https://res.cloudinary.com/dvql3swac/image/upload/v1711067359/xbziqiiypwznqeutkt4w.png" alt="up-squared"/>
+                  <% elsif member.balance.zero? %>
+                    <img width="30" height="30" id="Gray" src="https://res.cloudinary.com/dvql3swac/image/upload/v1711067467/ipi2g8dhklsebbiqoklj.png" alt="up-squared"/>
+                  <% elsif index == @accepted_members.size - 1 %>
+                    <img width="30" height="30" id="Red" src="https://res.cloudinary.com/dvql3swac/image/upload/v1711067650/s77nac5kgkdwfxclxxxd.png" alt="up-squared"/>
+                  <% else %>
+                    <img width="30" height="30" id="Gray" src="https://res.cloudinary.com/dvql3swac/image/upload/v1711067467/ipi2g8dhklsebbiqoklj.png" alt="up-squared"/>
+                  <% end %>
+                </div>
               </div>
             <% end %>
           </div>
@@ -92,26 +67,47 @@
                     <p> <%= member.user.updated_at.strftime('%Y-%m-%d') %></p>
                     <p> Balance: <b> ZAR <%= member.balance %> <b> </p>
                       </div>
+                      <!--arrow needs to be returned or reworked-->
                     </div>
-                    <% if member.user.photo.attached? %>
-                      <%= cl_image_tag member.user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
-                    <% else %>
-                      <%= image_tag "placeholder.png", class: "styled-image" %>
-                    <% end %>
-                  </div>
-                  <% if member.user.photo.attached? %>
-                    <%= cl_image_tag member.user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
-                  <% else %>
-                    <%= image_tag "placeholder.png", class: "styled-image" %>
                   <% end %>
                 </div>
-              <% end %>
-            <% else %>
-              <p>This susu has no members</p>
-            <% end %>
-            <br>
-            <br>
-            <br>
-            <br>
-          </div>
-        </div>
+              <% elsif @pending_members.present? %>
+                <div id="next_withdraw_big_card">
+                  <% @pending_members.each do |member| %>
+                    <p> Pending Members </p>
+                    <div id="withdraw_list_card">
+                      <div id="set_width">
+                        <% if member.user.photo.attached? %>
+                          <%= cl_image_tag member.user.photo.key, crop: :fill, class: "styled-image" %>
+                        <% else %>
+                          <%= image_tag "placeholder.png", class: "styled-image" %>
+                        <% end %>
+                        <div id="withdraw_user_text">
+                          <h6> <%= member.user.first_name %>  </h6>
+                          <p> <%= member.user.updated_at.strftime('%Y-%m-%d') %></p>
+                          <p> Balance: <b> ZAR <%= member.balance %> <b> </p>
+                            </div>
+                          </div>
+                          <% if member.user.photo.attached? %>
+                            <%= cl_image_tag member.user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
+                          <% else %>
+                            <%= image_tag "placeholder.png", class: "styled-image" %>
+                          <% end %>
+                        </div>
+                        <% if member.user.photo.attached? %>
+                          <%= cl_image_tag member.user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
+                        <% else %>
+                          <%= image_tag "placeholder.png", class: "styled-image" %>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <p>This susu has no members</p>
+                  <% end %>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                </div>
+              </div>
+            </div>  
