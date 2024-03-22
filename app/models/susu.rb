@@ -5,27 +5,16 @@ class Susu < ApplicationRecord
   has_many :users, through: :members
   has_many :messages
 
+
   def next_member
     reset_cycle
     members = self.members.where(status: 'accepted').where(has_received_disbursement: false).to_a
     next_member = members.shift
+
     next_member&.update(has_received_disbursement: true, disbursement_date: Date.today)
-    more_members_awaiting = !members.empty?
-    return next_member, more_members_awaiting
+    return next_member
   end
 
-
-
-  # def next_member
-  #   reset_cycle
-  #   members = self.members.where(status: 'accepted').where(has_received_disbursement: false).to_a
-  #   next_member = members.shift
-  #   next_member.has_received_disbursement = true
-  #   next_member.disbursement_date = Date.today
-
-  #   next_member.save
-  #   return next_member, !members.empty?
-  # end
 
 
   def reset_cycle
