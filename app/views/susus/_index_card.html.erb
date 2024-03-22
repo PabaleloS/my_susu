@@ -3,7 +3,9 @@
 <% invitation_found = false %>
 <% if @pending_susus.any? || @accepted_susus.any? %> <!-- Check for both pending and accepted invitations -->
   <% invitation_found = true %>
-  <p>Your susu list</p>
+  <div class="susu-list">
+  <h3>Your susu list</h3>
+  </div>
 <% else %>
   <p>No susu invitations</p>
 <% end %>
@@ -14,7 +16,7 @@
       <div id="invite_group_banner">
         <div id="susu_title">
           <h6><%= link_to susu.name, susu_path(susu) %></h6>
-          <p><%= susu.members.count %> members joined today</p>
+          <p><%= susu.members.count %> members joined</p>
         </div>
         <%= button_to "decline", decline_invite_path(susu), class: "btn btn-light" %>
       </div>
@@ -42,7 +44,7 @@
       <div id="invite_group_banner">
         <div id="susu_title">
           <h6><%= link_to susu.name, susu_path(susu) %></h6>
-          <p><%= susu.members.count %> members join today</p>
+          <p><%= susu.members.count %> members joined </p>
         </div>
       </div>
       <div id="invite_detail">

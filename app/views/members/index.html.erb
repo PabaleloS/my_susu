@@ -11,18 +11,17 @@
       </div>
     </div>
     <br>
-      <div id="header_div">
-        <h3>Track Contributions of <%= @susu.name %></h3>
+      <div id="contribution-header">
+        <h4>Contributions of <%= @susu.name %></h4>
       </div>
-      <br>
         <% @members.each do |member| %>
           <div id="user_list_card">
             <div id="members_body">
             <div class="member_details">
               <% if member.user.photo.attached? %>
-                <%= cl_image_tag member.user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
+                <%= cl_image_tag member.user.photo.key, height: 44, width: 53, crop: :fill, class: "avatar" %>
               <% else %>
-                <%= image_tag "placeholder.png", class: "styled-image" %>
+                <%= image_tag "placeholder.png", class: "avatar" %>
               <% end %>
               <div id="members_user_text">
               <h5><%= member.user.first_name %></h5>

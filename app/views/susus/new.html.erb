@@ -1,59 +1,50 @@
 <div class="container">
-    <div id="page_main1">
-        <div class="container new-susu-container">
-            <div id="first">
-                <div id="new_susu_header">
-
-                 <a href="#" onclick="history.back(); return false;">
-                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAZ0lEQVR4nO2WMQqAQAwE5xMR/f9LrETRxit8jsdJbKwsNIK306UaWJYlIMR9GmABeoKlCdiBMUpqwOrSDWglfRLF+ypWTXsLs0uTjwW/F9sl6k7yCEyxo8J99PpMkeJTXhZuOC5RPRnBEDtxjsnsowAAAABJRU5ErkJggg==">
-                </a>
-
-                    <div id="menu_icon">
-                        <img width="24" height="24" src="https://img.icons8.com/android/24/menu.png" alt="menu"/>
-                    </div>
-
-                </div>
-
-                <br>
-                <h2>Create</h2>
-                <h2><strong>a new SuSu</strong></h2>
-                <br>
-
-                <%= render 'susu_form' %>
-                <%= form_with(model: Susu.new, local: false, data: { turbo: true }) do |form| %>
-
-                <div class="mb-3 string optional susu_name" style="border: 2px solid rgba(0, 0, 0, 0.5);">
-                    <%= form.text_field :name, class: "form-control string optional", placeholder: "SuSu name" %>
-                </div>
-
-                <div class="form-outline mx-auto" data-mdb-input-init style="border: 2px solid rgba(0, 0, 0, 0.5);">
-                    <%= form.text_area :description, class: "form-control", id: "textAreaExample", rows: "4", placeholder: "Description",  style: "height: 300px;" %>
-                </div>
-                <br>
-                <br>
-
-                <h2>Set Monthly Contribution (R)</h2>
-                <br>
-                <div class="mb-3 string optional susu_name" style="display: flex; align-items: center;" data-controller="slider">
-                    <%= form.range_field :agree_amount, min: 100, max: 6000, value: 100, class: "slider", data: { action: "change->slider#update" }, "data-slider-target": "input" %>
-                    <!--<input type="range" min="100" max="6000" value="100" class="slider" data-action="change->slider#update" data-slider-target="input">-->
-                    <div class="slider-fill"></div>
-                    <span data-slider-target="contribution">100</span>
-                </div>
-                <br>
-                <br>
-            </div>
-              <br>
-              <br>
-              <br>
-            <div id="next_button1">
-                <%= form.submit "Create SuSu", class: "btn btn-secondary btn-lg btn-block btn-orange", style: "font-weight: bold; color: white;  height: 43px; flex-shrink: 0; margin: auto;" %>
-                <% end %>
-
-                <br>
-                <br>
-                <br>
-<!--                <script>
+  <div id="page_main1">
+    <div class="container new-susu-container">
+      <div id="first">
+        <div id="new_susu_header">
+          <a href="#" onclick="history.back(); return false;">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAZ0lEQVR4nO2WMQqAQAwE5xMR/f9LrETRxit8jsdJbKwsNIK306UaWJYlIMR9GmABeoKlCdiBMUpqwOrSDWglfRLF+ypWTXsLs0uTjwW/F9sl6k7yCEyxo8J99PpMkeJTXhZuOC5RPRnBEDtxjsnsowAAAABJRU5ErkJggg==">
+          </a>
+          <div id="menu_icon">
+            <img width="24" height="24" src="https://img.icons8.com/android/24/menu.png" alt="menu"/>
+          </div>
+        </div>
+        <br>
+        <h2>Create</h2>
+        <h2><strong>a new SuSu</strong></h2>
+        <br>
+        <%= render 'susu_form' %>
+        <%= form_with(model: Susu.new, local: false, data: { turbo: true }) do |form| %>
+          <div class="mb-3 string optional susu_name" style="border: 2px solid rgba(0, 0, 0, 0.5);">
+            <%= form.text_field :name, class: "form-control string optional", placeholder: "SuSu name" %>
+          </div>
+          <div class="form-outline mx-auto" data-mdb-input-init style="border: 2px solid rgba(0, 0, 0, 0.5);">
+            <%= form.text_area :description, class: "form-control", id: "textAreaExample", rows: "4", placeholder: "Description",  style: "height: 300px;" %>
+          </div>
+          <br>
+          <br>
+          <h2>Set Monthly Contribution (R)</h2>
+          <br>
+          <div class="mb-3 string optional susu_name" style="display: flex; align-items: center;" data-controller="slider">
+            <%= form.range_field :agree_amount, min: 100, max: 6000, value: 100, class: "slider", data: { action: "change->slider#update" }, "data-slider-target": "input" %>
+            <!--<input type="range" min="100" max="6000" value="100" class="slider" data-action="change->slider#update" data-slider-target="input">-->
+            <div class="slider-fill"></div>
+            <span data-slider-target="contribution">100</span>
+          </div>
+          <br>
+          <br>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div id="next_button1">
+          <%= form.submit "Create SuSu", class: "btn btn-secondary btn-lg btn-block btn-orange", style: "font-weight: bold; color: white;  height: 43px; flex-shrink: 0; margin: auto;" %>
+        <% end %>
+        <br>
+        <br>
+        <br>
+        <!--                <script>
                     document.getElementById("back_arrow").addEventListener("click", function(event) {
                         event.preventDefault();
                         window.location.href = "../";
@@ -63,7 +54,7 @@
                         document.getElementById("sliderValue").innerText = value;
                     }
                 </script>-->
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>

@@ -1,44 +1,34 @@
   <br>
-  <div id="show_payment_div">
-
-      <div id="user_show_header">
-
-          <p>mySusu balance</p>
-          <img width="20" id="hideIcon" height="20" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710348399/xsrryz8iuwjcbzsdqqlo.png">
-          </div>
-
-        <div id="payment_btns_div">
-            <div id="secret_balance">
-
-            <div id="Actual_balance">
-              <h6><b><p> <span> ZAR<%= @susu.balance %></span></p></b></h6>
-            </div>
-
-            <div id="fake_balance">
-            <h6><b><p> <span>ZARxxxxx</span></p></b></h6>
-            </div>
-          </div>
-
-        </div>
-
-        <div id="payment-tab">
-          <% if @susu.user == current_user %>
-            <div id="top_btn">
-              <p><%= button_to "disburse", disburse_path(@susu), id:"button199", class: "btn btn-link no-underline text-white" %></p>
-            </div>
-          <% end %>
-
-        <div id="top_btn">
-        <p><%= link_to "Topup", "#{new_susu_deposit_path(@susu)}?timestamp=#{Time.current.to_i}", class: "no-underline text-white", id: "reload-link" %></p>
-
-        </div>
-
-        </div>
-
+<div id="show_payment_div">
+  <div id="user_show_header">
+    <p>mySusu balance</p>
+    <img width="20" id="hideIcon" height="20" src="https://res.cloudinary.com/dvql3swac/image/upload/v1710348399/xsrryz8iuwjcbzsdqqlo.png">
   </div>
-
-
-
+  <div id="payment_btns_div">
+    <div id="secret_balance">
+      <div id="Actual_balance">
+        <h6><b>
+            <p> <span> ZAR<%= @susu.balance %></span></p>
+          </b></h6>
+      </div>
+      <div id="fake_balance">
+        <h6><b>
+            <p> <span>ZARxxxxx</span></p>
+          </b></h6>
+      </div>
+    </div>
+  </div>
+  <div id="payment-tab">
+    <% if @susu.user == current_user %>
+      <div id="top_btn">
+        <p><%= button_to "Disburse", disburse_path(@susu), id:"button199", class: "btn btn-link no-underline text-white" %></p>
+      </div>
+    <% end %>
+    <div id="top_btn">
+      <p><%= link_to "Topup", "#{new_susu_deposit_path(@susu)}?timestamp=#{Time.current.to_i}", class: "no-underline text-white", id: "reload-link" %></p>
+    </div>
+  </div>
+</div>
 <div id="susu_banner_div">
   <div id="big_card">
     <div id="inner_title_div">

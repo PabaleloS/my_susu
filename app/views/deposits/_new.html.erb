@@ -4,28 +4,23 @@
             email: current_user.email,
           } %>
   <%= form.hidden_field :user_info, value: hidden_fields.to_json %>
-
   <div class="form-group" style="text-align: center;">
     <%= form.hidden_field :agree_amount_input, value: @susu.agree_amount, id: 'agree_amount_input' %>
     <%= form.label :agree_amount, "Agreed Amount" %>
     <p style="font-size: 24px;"> ZAR <%= @susu.agree_amount %></p>
   </div>
-
   <div style="text-align: center; margin-top:20px;">
     <%= form.submit "Make Deposit", class: "track-button", id: "make_deposit_button", onclick: "hideForm()" %>
   </div>
 <% end %>
-
 <%= form_with(model: @deposit, url: susu_deposits_path(@susu), id: 'confirmationForm', class: 'hidden-form') do |form| %>
   <%= form.hidden_field :authenticity_token, value: form_authenticity_token %>
-
-  <h1 style="text-align: center;"> You initiated the Payment of <br> <b>ZAR <%= number_with_precision(@susu.agree_amount, precision: 2) %> </b> </h1>
-
+  <h1 style="text-align: center;"> You initiated the Payment of <br>
+    <b>ZAR <%= number_with_precision(@susu.agree_amount, precision: 2) %> </b> </h1>
   <div class="form-group" style="text-align: center;">
     <%= form.hidden_field :agree_amount, value: @susu.agree_amount, id: 'agree_amount_input' %>
     <p> Via Paystack </p>
   </div>
-
   <div style="text-align: center; margin-top:20px;">
     <%= form.submit "Confirm", class: "track-button btn btn-primary btn-blue", id: "confirm_deposit_button" %>
   </div>
