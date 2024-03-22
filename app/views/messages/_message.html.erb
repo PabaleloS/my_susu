@@ -5,22 +5,20 @@
       <div id="message_img">
 
         <% if current_user.photo.attached? %>
-          <%= cl_image_tag current_user.photo.key, height: 44, width: 53, crop: :fill, class: "styled-image" %>
+          <%= cl_image_tag current_user.photo.key, class: "styled-imagez" %>
         <% else %>
-          <%= image_tag "placeholder.png", class: "styled-image" %>
+          <%= image_tag "placeholder.png", class: "styled-imagez" %>
         <% end %>      </div>
 
       <div id="message_info">
 
-        <div id="message_contenty">
-          <h6 style="font-size: 9px;"><%= message.member.user.first_name %></h6>
-          <h4 style="font-size: 15px;"><%= message.content %></h4>
+        <div id="message_contenty" style="width: 100%">
+          <h6 style="font-size: 12px; margin-right: 5px;"><%= message.member.user.first_name %></h6>
+          <h4 style="font-size: 14px;"><%= message.content %></h4>
+          <small style="font-size: 10px; margin-right: 5px;"><i><%= message.created_at.strftime("%l:%M %p") %></i></small>
         </div>
 
         <div id="msg-time">
-          <small>
-            <i><%= message.created_at.strftime("%l:%M %p") %></i>
-          </small>
         </div>
 
       </div>
