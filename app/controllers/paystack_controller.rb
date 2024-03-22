@@ -15,7 +15,7 @@ class PaystackController < ApplicationController
 
       }
 
-      uri = URI("https://my-susu-49a72502f81a.herokuapp.com/susus/#{params[:susu_id]}/deposits")
+      uri = URI("mysusu.pro/susus/#{params[:susu_id]}/deposits")
       http = Net::HTTP.new(uri.host, uri.port)
       request = Net::HTTP::Post.new(uri.path)
       request.set_form_data(data)
